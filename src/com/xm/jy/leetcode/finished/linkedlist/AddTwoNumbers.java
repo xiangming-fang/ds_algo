@@ -1,4 +1,4 @@
-package com.xm.jy.leetcode.doing;
+package com.xm.jy.leetcode.finished.linkedlist;
 
 import com.xm.jy.leetcode.data_structure.ListNode;
 import com.xm.jy.leetcode.util.ListNodeUtil;
