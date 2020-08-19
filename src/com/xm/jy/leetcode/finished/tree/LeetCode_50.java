@@ -1,11 +1,6 @@
 package com.xm.jy.leetcode.finished.tree;
 
 import com.xm.jy.leetcode.data_structure.TreeNode;
-import com.xm.jy.test.api.A;
-
-import java.util.ArrayList;
-
-import static com.xm.jy.leetcode.util.TreeNodeUtil.generateTreeNode;
 
 /**
  * @author: albert.fang

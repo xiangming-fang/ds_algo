@@ -2,13 +2,29 @@ package com.xm.jy.leetcode.finished.linkedlist;
 
 import com.xm.jy.leetcode.data_structure.ListNode;
 
+import java.util.Stack;
+
 /**
  * @author: albert.fang
  * @date: 2020/7/22 10:54
  * @description: 剑指 Offer 06. 从尾到头打印链表
  * @description: 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。
  */
-public class LeetCode_20 {
+public class ReversePrint {
+    private static int[] reversePrint(ListNode head) {
+        Stack<Integer> stack = new Stack<>();
+        ListNode p = head;
+        while (p != null){
+            stack.push(p.val);
+            p = p.next;
+        }
+        int[] result = new int[stack.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = stack.pop();
+        }
+        return result;
+    }
+
     private static int[] reversePrint1(ListNode head) {
         int listNodeLength = 0;
         ListNode head2 = head;

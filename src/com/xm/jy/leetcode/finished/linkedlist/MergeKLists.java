@@ -12,8 +12,33 @@ import java.util.Arrays;
  * @description: 23. 合并K个排序链表
  * @description: 合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
  */
-public class LeetCode_33 {
-    private static ListNode mergeKLists(ListNode[] lists) {
+public class MergeKLists {
+    public ListNode mergeKLists(ListNode[] lists) {
+        ListNode result = null;
+        for (ListNode list : lists) {
+            result = mergeTwoLists(result,list);
+        }
+        return result;
+    }
+
+    // 递归两两合并
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2){
+        if (l1 == null){
+            return l2;
+        }
+        if (l2 == null){
+            return l1;
+        }
+        if (l1.val <= l2.val){
+            l1.next = mergeTwoLists(l1.next,l2);
+            return l1;
+        }else {
+            l2.next = mergeTwoLists(l1,l2.next);
+            return l2;
+        }
+    }
+
+    private static ListNode mergeKLists1(ListNode[] lists) {
         ArrayList<Integer> arrayList = new ArrayList<>();
         for (ListNode list : lists) {
             while (list != null){

@@ -12,9 +12,64 @@ import java.util.Arrays;
  * @description: 21. 合并两个有序链表
  * @description: 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
  */
-public class LeetCode_24 {
+public class MergeTwoLists {
 
-    private static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2){
+        if (l1 == null){
+            return l2;
+        }
+        if (l2 == null){
+            return l1;
+        }
+        if (l1.val <= l2.val){
+            l1.next = mergeTwoLists(l1.next,l2);
+            return l1;
+        }else {
+            l2.next = mergeTwoLists(l1,l2.next);
+            return l2;
+        }
+    }
+
+    public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+        if (l1 == null && l2 == null){
+            return null;
+        }
+        if (l1 == null){
+            return l2;
+        }
+        if (l2 == null){
+            return l1;
+        }
+        ListNode newNode = new ListNode(-1);
+        // 该指针不能移动
+        ListNode remian = newNode;
+        ListNode move = newNode;
+        ListNode p = l1;
+        ListNode q = l2;
+        while (true){
+            if (p.val <= q.val){
+                move.next = p;
+                p = p.next;
+                move = move.next;
+            }
+            if (p == null){
+                move.next = q;
+                break;
+            }
+            if (q.val < p.val){
+                move.next = q;
+                q = q.next;
+                move = move.next;
+            }
+            if (q == null){
+                move.next = p;
+                break;
+            }
+        }
+        return remian.next;
+    }
+
+    private static ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
         if (l1 == null && l2 == null){
             return null;
         }
