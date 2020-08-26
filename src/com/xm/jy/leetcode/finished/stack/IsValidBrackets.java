@@ -9,7 +9,7 @@ import java.util.Stack;
  * @date: 2020/7/20 13:45
  * @description: 力扣第20题：有效的括号
  */
-public class IsValid {
+public class IsValidBrackets {
     static HashMap<Character,Character> bracket = new HashMap<Character,Character>(){
         {
             put('(',')');
