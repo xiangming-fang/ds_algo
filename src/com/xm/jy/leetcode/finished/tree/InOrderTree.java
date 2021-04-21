@@ -10,16 +10,18 @@ import java.util.List;
  */
 public class InOrderTree {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> ret = new ArrayList<>();
-        inorderTraversal(root,ret);
-        return ret;
+        List<Integer> result = new ArrayList<>();
+        inorderTraversal(root,result);
+        return result;
     }
 
-    private void inorderTraversal(TreeNode node, List<Integer> ret) {
-        if (node == null)
+    public void inorderTraversal(TreeNode root,List<Integer> result) {
+        if (root == null){
             return;
-        inorderTraversal(node.left,ret);
-        ret.add(node.val);
-        inorderTraversal(node.right,ret);
+        }
+        inorderTraversal(root.left,result);
+        result.add(root.val);
+        inorderTraversal(root.right,result);
     }
 }
+
