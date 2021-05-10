@@ -6,13 +6,19 @@ package com.xm.jy.leetcode.data_structure;
  * @description: 树的节点
  */
 public class TreeNode {
-    public int val;
+    public Integer val;
     public TreeNode right;
     public TreeNode left;
 
-    public TreeNode(int val){
+    public TreeNode(Integer val){
         this.val = val;
         this.right = null;
         this.left = null;
+    }
+
+    public TreeNode(Integer val,TreeNode left,TreeNode right){
+        this.val = val;
+        this.left = left;
+        this.right = right;
     }
 }

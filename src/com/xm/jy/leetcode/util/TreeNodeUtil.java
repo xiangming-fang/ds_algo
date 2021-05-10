@@ -3,6 +3,7 @@ package com.xm.jy.leetcode.util;
 import com.xm.jy.leetcode.data_structure.TreeNode;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: albert.fang
@@ -10,37 +11,35 @@ import java.util.ArrayList;
  * @description: 二叉树的工具类
  */
 public class TreeNodeUtil {
+
+    public static TreeNode generateSimpleTree(List<Integer> ants){
+        TreeNode root = new TreeNode(ants.get(0));
+        generateSimpleTree(root,ants,0);
+        return root;
+    }
+
     /**
-     * 根据传进来的一个数组，按顺序生成一颗二叉树
+     * 层序拼接
      * @param ants
      * @return
      */
-    public static TreeNode generateTreeNode(Integer[] ants){
-        ArrayList<TreeNode> treeNodes = new ArrayList<>();
-        // 创建出对应多的二叉树节点
-        for (int i = 0; i < ants.length; i++) {
-            if (ants[i] != null){
-                TreeNode node = new TreeNode(ants[i]);
-                treeNodes.add(node);
-            }else if (ants[i] == null){
-                treeNodes.add(null);
-            }
+    public static void generateSimpleTree(TreeNode node, List<Integer> ants, int index){
+        if (index > ants.size() - 1){
+            return;
         }
-        for (int j = 0; j < treeNodes.size(); j++) {
-            if (treeNodes.get(j) != null){
-                if (2 * j + 1 <= treeNodes.size() - 1){
-                    treeNodes.get(j).left = treeNodes.get(2 * j + 1);
-                }
-                if (2 * j + 2 <= treeNodes.size() - 1){
-                    treeNodes.get(j).right = treeNodes.get(2 * j + 2);
-                }
-            }
+        if (node == null){
+            return;
         }
-        // TODO 未完善，有缺陷，暂时只对满二叉树的生成才是正确的
-        return treeNodes.get(0);
+        int leftIndex = 2 * index + 1;
+        int rightIndex = 2 * index + 2;
+        TreeNode leftNode = leftIndex + 1 > ants.size() ? null : new TreeNode(ants.get(leftIndex));
+        TreeNode rightNode = rightIndex + 1 > ants.size() ? null : new TreeNode(ants.get(rightIndex));
+        node.left = leftNode;
+        generateSimpleTree(node.left,ants,leftIndex);
+        node.right = rightNode;
+        generateSimpleTree(node.right,ants,rightIndex);
     }
 
     public static void main(String[] args) {
-        TreeNode node = generateTreeNode(new Integer[]{5,4,8,11,null,13,4,7,2,null,null,null,1});
     }
 }
