@@ -36,37 +36,6 @@ public class SN0019 {
         return dummy.next;
     }
 
-    /**
-     * 用arrayList接住链表的每个值，然后将倒数第n个值删掉，再用arraylist里的值，重新创建一个新的链表
-     * @param head
-     * @param n
-     * @return
-     */
-    private static ListNode removeNthFromEnd2(ListNode head, int n) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        ListNode q = head;
-        int length = 0;
-        while (q != null){
-            arrayList.add(q.val);
-            length ++;
-            q = q.next;
-        }
-
-        arrayList.remove(arrayList.size() - n);
-
-        // 说明之前传进来的链表长度为1，直接移除没有数据了
-        if (arrayList.size() == 0){
-            return null;
-        }
-
-        // 重新生成一个新的链表返回
-        Integer[] integers = new Integer[arrayList.size()];
-        for (int i = 0; i < integers.length; i++) {
-            integers[i] = arrayList.get(i);
-        }
-        return ListNodeUtil.generateListNode(integers);
-    }
-
     public static void main(String[] args) {
         removeNthFromEnd1(ListNodeUtil.generateListNode(new Integer[]{1}),1);
         ListNode listNode = ListNodeUtil.generateListNode(new Integer[]{1,2,3,4,5});
