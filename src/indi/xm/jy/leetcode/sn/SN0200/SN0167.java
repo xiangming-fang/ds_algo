@@ -1,5 +1,8 @@
 package indi.xm.jy.leetcode.sn.SN0200;
 
+import org.junit.Test;
+
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -10,11 +13,11 @@ import java.util.Objects;
 public class SN0167 {
     public static void main(String[] args) {
         int[] numbers = {2,4,6};
-        for (int i : Objects.requireNonNull(twoSum(numbers, 8))) {
+        for (int i : Objects.requireNonNull(twoSum01(numbers, 8))) {
             System.out.println(i);
         }
     }
-    private static int[] twoSum(int[] numbers, int target) {
+    private static int[] twoSum01(int[] numbers, int target) {
         for (int k = 0; k < numbers.length; k++) {
             int i = k + 1;
             int j = numbers.length - 1;
@@ -33,5 +36,32 @@ public class SN0167 {
             }
         }
         return new int[]{-1,-1};
+    }
+
+    // 双指针,numbers 有序
+    public int[] twoSum(int[] numbers, int target) {
+        int[] result = new int[2];
+        int left = 0;
+        int right = numbers.length - 1;
+        while (left < right){
+            if (numbers[left] + numbers[right] < target){
+                left ++;
+            }
+            else if (numbers[left] + numbers[right] > target){
+                right --;
+            }
+            else {
+                result[0] = left + 1;
+                result[1] = right + 1;
+                break;
+            }
+        }
+        return result;
+    }
+
+    @Test
+    public void test(){
+        System.out.println(Arrays.toString(twoSum(new int[]{2, 4, 6}, 8)));
+        System.out.println(Arrays.toString(twoSum(new int[]{0,0,3,4}, 0)));
     }
 }
