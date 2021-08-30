@@ -10,7 +10,7 @@ import indi.xm.jy.leetcode.util.ListNodeUtil;
  * @description: 给定一个带有头结点 head 的非空单链表，返回链表的中间结点。如果有两个中间结点，则返回第二个中间结点。
  */
 public class SN0876 {
-    private static ListNode middleNode(ListNode head) {
+    private static ListNode middleNode01(ListNode head) {
         int nodeLength = 0;
         ListNode saveOne = head;
         while (head != null){
@@ -24,8 +24,23 @@ public class SN0876 {
         return saveOne;
     }
 
+    // 双指针 之 快慢指针
+    public ListNode middleNode(ListNode head) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode fast = dummy;
+        ListNode slow = dummy;
+        while (fast != null){
+            fast = fast.next;
+            if (fast != null){
+                fast = fast.next;
+            }
+            slow = slow.next;
+        }
+        return slow;
+    }
+
     public static void main(String[] args) {
         Integer[] ants = {1,2,3,4,5};
-        middleNode(ListNodeUtil.generateListNode(ants));
     }
 }
