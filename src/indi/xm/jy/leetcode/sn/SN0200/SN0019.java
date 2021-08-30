@@ -34,6 +34,23 @@ public class SN0019 {
         return dummy.next;
     }
 
+    // 双指针 之 前后指针
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pre = dummy;
+        for (int i = 0; i < n; i++) {
+            pre = pre.next;
+        }
+        ListNode after = dummy;
+        while (pre.next != null){
+            pre = pre.next;
+            after = after.next;
+        }
+        after.next = after.next.next;
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         removeNthFromEnd1(ListNodeUtil.generateListNode(new Integer[]{1}),1);
         ListNode listNode = ListNodeUtil.generateListNode(new Integer[]{1,2,3,4,5});
