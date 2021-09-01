@@ -66,7 +66,7 @@ public class SN0165 {
         }else {
             s2 = s2.substring(second);
         }
-        return Integer.valueOf(s1) > Integer.valueOf(s2) ? 1 : Integer.valueOf(s1).equals(Integer.valueOf(s2)) ? 0 : -1;
+        return Integer.parseInt(s1) > Integer.parseInt(s2) ? 1 : Integer.valueOf(s1).equals(Integer.valueOf(s2)) ? 0 : -1;
     }
 
 
