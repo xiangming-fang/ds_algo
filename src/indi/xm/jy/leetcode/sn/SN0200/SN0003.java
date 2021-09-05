@@ -1,5 +1,7 @@
 package indi.xm.jy.leetcode.sn.SN0200;
 
+import org.junit.Test;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,8 +13,22 @@ import java.util.stream.Collectors;
  * @problem-key: https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
  */
 public class SN0003 {
-    private static int solution01(String s){
-        return 0;
+    public int lengthOfLongestSubstring(String s) {
+        TreeSet<Character> set = new TreeSet<>();
+        int right = -1;
+        int res = 0;
+        for (int left = 0; left < s.length(); left++) {
+            if (left != 0){
+                // 注意：移动左指针，是删除当前左指针之前的那个位置元素
+                set.remove(s.charAt(left - 1));
+            }
+            while (right + 1 < s.length() && !set.contains(s.charAt(right + 1))){
+                set.add(s.charAt(right + 1));
+                right ++;
+            }
+            res = Math.max(res,right - left + 1);
+        }
+        return res;
     }
 
     private static int solution02(String s){
@@ -61,8 +77,8 @@ public class SN0003 {
         return maxLen;
     }
 
-    public static void main(String[] args) {
-        System.out.println(solution01("pwwkewwwwwwwwww"));
-        System.out.println(solution02("pwwkewwwwabcdefghijklmnopqrstuvwxyzwwwww"));
+    @Test
+    public void test(){
+        System.out.println(lengthOfLongestSubstring("pwwkew"));
     }
 }

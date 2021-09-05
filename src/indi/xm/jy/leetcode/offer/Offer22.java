@@ -8,7 +8,7 @@ import indi.xm.jy.leetcode.data_structure.ListNode;
  * @description: 剑指 Offer 22. 链表中倒数第k个节点
  */
 public class Offer22 {
-    private static ListNode getKthFromEnd(ListNode head, int k) {
+    private static ListNode getKthFromEnd01(ListNode head, int k) {
         // 先反转
         ListNode pre = null;
         ListNode cur = head;
@@ -29,5 +29,22 @@ public class Offer22 {
             cur2 = next;
         }
         return pre2;
+    }
+
+
+    // 双指针 之 先后指针
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        ListNode pre = dummy;
+        ListNode cur = dummy;
+        for (int i = 0; i < k; i++) {
+            pre = pre.next;
+        }
+        while (pre != null){
+            pre = pre.next;
+            cur = cur.next;
+        }
+        return cur;
     }
 }

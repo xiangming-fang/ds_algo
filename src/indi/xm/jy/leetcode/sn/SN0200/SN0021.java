@@ -3,6 +3,7 @@ package indi.xm.jy.leetcode.sn.SN0200;
 import indi.xm.jy.leetcode.data_structure.ListNode;
 import indi.xm.jy.leetcode.util.LeetCodeUtil;
 import indi.xm.jy.leetcode.util.ListNodeUtil;
+import org.junit.Test;
 
 import java.util.Arrays;
 
@@ -101,11 +102,8 @@ public class SN0021 {
     }
 
 
-    public static void main(String[] args) {
-        Integer[] ants = {1,2,4,5,3,4};
-        Integer[] ants2 = {1,1,11,111};
-        for (int ant : LeetCodeUtil.mergeTwoArrays(ants,ants2)) {
-            System.out.println(ant);
-        }
+    @Test
+    public void test(){
+
     }
 }
