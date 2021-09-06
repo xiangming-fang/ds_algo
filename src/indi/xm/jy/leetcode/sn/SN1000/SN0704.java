@@ -42,6 +42,7 @@ public class SN0704 {
 
     @Test
     public void test(){
-        System.out.println(search(new int[]{5}, 2));
+//        System.out.println(search(new int[]{5}, 2));
+        System.out.println(search(new int[]{-1,0,3,5,9,12}, 13));
     }
 }
