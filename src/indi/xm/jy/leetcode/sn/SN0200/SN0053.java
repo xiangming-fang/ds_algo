@@ -12,10 +12,22 @@ import org.junit.Test;
  */
 public class SN0053 {
 
-    public int maxSubArray(int[] nums) {
+    public int maxSubArray01(int[] nums) {
         int[] dp = new int[nums.length];
         dp[0] = nums[0];
         int max = nums[0];
+        for (int i = 1; i < dp.length; i++) {
+            dp[i] = Math.max(dp[i-1] + nums[i],nums[i]);
+            max = Math.max(max,dp[i]);
+        }
+        return max;
+    }
+
+    // 20210907 dp 转移 自己写的
+    public int maxSubArray(int[] nums){
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        int max = dp[0];
         for (int i = 1; i < dp.length; i++) {
             dp[i] = Math.max(dp[i-1] + nums[i],nums[i]);
             max = Math.max(max,dp[i]);
@@ -29,5 +41,6 @@ public class SN0053 {
         System.out.println(maxSubArray(new int[]{1}));
         System.out.println(maxSubArray(new int[]{0}));
         System.out.println(maxSubArray(new int[]{-7}));
+        System.out.println(maxSubArray(new int[]{-2,1}));
     }
 }
