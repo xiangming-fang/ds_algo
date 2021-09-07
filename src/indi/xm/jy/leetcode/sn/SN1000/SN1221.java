@@ -10,7 +10,26 @@ import java.util.Objects;
  * 分割平衡字符串
  */
 public class SN1221 {
+    // 方法二：指针
     public int balancedStringSplit(String s) {
+        int count = 0;
+        int res = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'L'){
+                count ++;
+            }
+            if (s.charAt(i) == 'R'){
+                count --;
+            }
+            if (count == 0){
+                res ++;
+            }
+        }
+        return res;
+    }
+
+    // 方法一：映射
+    public int balancedStringSplit01(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
         int res = 0;
         for (int i = 0; i < s.length(); i++) {
