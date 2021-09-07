@@ -1,27 +1,64 @@
 package indi.xm.jy.leetcode.sn.SN0200;
 
-import indi.xm.jy.leetcode.data_structure.TreeNode;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
- * @author: albert.fang
- * @date: 2020/11/4 10:43
- * @description: 28. 对称的二叉树
+ * @ProjectName: leetcode
+ * @Package: indi.xm.jy.leetcode.sn.SN0200
+ * @ClassName: SN0028
+ * @Author: albert.fang
+ * @Description: 实现 strStr()
+ * @Date: 2021/9/5 16:24
  */
 public class SN0028 {
-    public boolean isSymmetric(indi.xm.jy.leetcode.data_structure.TreeNode root) {
-        if (root == null)
-            return true;
-        // 传入一个节点的左右子树
-        return isSymmetric(root.left,root.right);
+    public int strStr01(String haystack, String needle) {
+        return haystack.indexOf(needle);
     }
 
-    private boolean isSymmetric(indi.xm.jy.leetcode.data_structure.TreeNode left, TreeNode right) {
-        if (left == null && right == null)
-            return true;
-        if (left == null || right == null)
-            return false;
-        if (left.val != right.val)
-            return false;
-        return isSymmetric(left.left,right.right) && isSymmetric(left.right,right.left);
+    public int strStr(String haystack, String needle) {
+        if (Objects.equals(needle, "")){
+            return 0;
+        }
+        else if (needle.length() > haystack.length()){
+            return -1;
+        }
+        int second = 0;
+        char first = needle.charAt(second);
+        char[] chars = haystack.toCharArray();
+        ArrayList<Integer> idxs = new ArrayList<>();
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == first) {
+                idxs.add(i);
+            }
+        }
+        for (int i = 0; i < idxs.size(); i++) {
+            int idx = idxs.get(i);
+            int count = 0;
+            if (idx + needle.length() > haystack.length()){
+                return -1;
+            }
+            for (int j = 0; j < needle.length(); j++) {
+                if (haystack.charAt(idx) == needle.charAt(j)) {
+                    idx ++;
+                    count ++;
+                }
+            }
+            if (count == needle.length()){
+                return idxs.get(i);
+            }
+        }
+        return -1;
+    }
+
+    @Test
+    public void test(){
+//        System.out.println(strStr("hello", "ll"));
+//        System.out.println(strStr("aaaaa", "bba"));
+//        System.out.println(strStr("", ""));
+//        System.out.println(strStr("mississippi", "issip"));
+        System.out.println(strStr("bbbbabacbbaacbba", "abb"));
     }
 }
