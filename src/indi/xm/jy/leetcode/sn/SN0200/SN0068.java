@@ -20,6 +20,8 @@ public class SN0068 {
         List<String> row = new ArrayList<>();
         row.add(words[idx]);
         while (true){
+            // 注意这里的getLen(row)之后为什么要加1
+            // 因为你在这行加入一个新的单词，那么得在新单词和之前的末尾单词之间加一个空格
             if (idx + 1 < words.length && getLen(row) + 1 + words[idx + 1].length() <= maxWidth){
                 row.add(words[++idx]);
             }
@@ -36,6 +38,7 @@ public class SN0068 {
         return res;
     }
 
+    // 最后一行的左对齐
     private String getLastRow(List<String> row,int maxLen){
         StringBuilder res = new StringBuilder();
         for (String s : row) {
@@ -49,6 +52,7 @@ public class SN0068 {
         return res.toString();
     }
 
+    // 非最后一行的左右对齐
     private String getRow(List<String> row,int maxLen){
         int wordNum = row.size();
         int len = getLen(row);
@@ -61,13 +65,14 @@ public class SN0068 {
         int needSpace = row.size() - 1;
         // 平分的话，每个区域放几个空格
         int singleSpaceNum = spaceNum / needSpace;
-        // 平分之后剩余几个
+        // 平分之后剩余几个空格
         int remainNums = spaceNum % needSpace;
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < row.size(); i++) {
             res.append(row.get(i));
             if (i != row.size() - 1){
-                // 尽可能的让空格平均
+                // 注意这里：尽可能的让空格平均
+                // 比如：总共5个空格，有三个空格区域，那么就应该分成 2，2，1，而并不是3，1，1
                 if (i <= remainNums - 1){
                     res.append(concat(singleSpaceNum + 1));
                 }else {
@@ -78,6 +83,7 @@ public class SN0068 {
         return res.toString();
     }
 
+    // 生成长度为len的空字符串
     private String concat(int len){
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < len; i++) {
@@ -86,7 +92,7 @@ public class SN0068 {
         return res.toString();
     }
 
-
+    // 判断这行已经被占了几个位置了
     private int getLen(List<String> row){
         int res = row.size() - 1;
         for (String s : row) {
