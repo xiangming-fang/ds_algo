@@ -28,12 +28,6 @@ public class SN0162 {
     }
 
     private int findPeakElement(int left, int right, int[] nums) {
-        if (right == 0){
-            return right;
-        }
-        if (left == nums.length - 1){
-            return left;
-        }
         int mid = left + (right - left)/2;
         // 下坡
         if (nums[mid - 1] > nums[mid] && nums[mid] > nums[mid + 1]){
