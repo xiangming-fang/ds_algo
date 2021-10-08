@@ -45,11 +45,34 @@ public class SN0187 {
         return res;
     }
 
+    // 优化
+    // 优化点：简化对map的过滤
+    public List<String> findRepeatedDnaSequences01(String s) {
+        ArrayList<String> res = new ArrayList<>();
+        if (s.length() < 10){
+            return res;
+        }
+        HashMap<String, Integer> map = new HashMap<>();
+        int first = 0;
+        int second = 10;
+        // 通过滑动窗口得到map
+        while (second <= s.length()){
+            String temp = s.substring(first, second);
+            Integer value = map.getOrDefault(temp, 0);
+            // 最巧妙的地方，让value == 1而不是 value > 1
+            if (value == 1) res.add(temp);
+            map.put(temp,value + 1);
+            first ++;
+            second ++;
+        }
+        return res;
+    }
+
     @Test
     public void test(){
-        System.out.println(findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"));
-        System.out.println(findRepeatedDnaSequences("AAAAAAAAAAAAA"));
-        System.out.println(findRepeatedDnaSequences("AAAAAAAAAAA"));
+        System.out.println(findRepeatedDnaSequences01("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"));
+        System.out.println(findRepeatedDnaSequences01("AAAAAAAAAAAAA"));
+        System.out.println(findRepeatedDnaSequences01("AAAAAAAAAAA"));
         System.out.println("AAAAAAAAAAA".length());
     }
 }
