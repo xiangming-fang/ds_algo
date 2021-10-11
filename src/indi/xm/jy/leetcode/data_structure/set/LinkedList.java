@@ -187,6 +187,11 @@ public class LinkedList<E extends Comparable<E>> implements List<E> {
         return size == 0;
     }
 
+    @Override
+    public void add(E val) {
+
+    }
+
     // 辅助方法 —— 链表长度
     public int getSize(){
         return size;

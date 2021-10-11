@@ -23,4 +23,6 @@ public interface List<E>{
 
     // 链表是否为空
     boolean isEmpty();
+
+    void add(E val);
 }
