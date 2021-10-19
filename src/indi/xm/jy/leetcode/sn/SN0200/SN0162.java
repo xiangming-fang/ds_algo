@@ -35,7 +35,7 @@ public class SN0162 {
         }
         // 上坡
         else if (nums[mid - 1] < nums[mid] && nums[mid] < nums[mid + 1]){
-            left = mid + 1;
+            left = mid;
             return findPeakElement(left,right,nums);
         }
         // 答案
@@ -44,7 +44,7 @@ public class SN0162 {
         }
         // 在谷底
         else if (nums[mid - 1] > nums[mid] && nums[mid] < nums[mid + 1]){
-            left = mid + 1;
+            left = mid;
             return findPeakElement(left,right,nums);
         }
         return -1;
