@@ -27,7 +27,7 @@ public class SN0017 {
     }
 
     // index 是一棵树的深度
-    public void dfs(String digits,int index,StringBuilder temp){
+    private void dfs(String digits,int index,StringBuilder temp){
         if (temp.length() == digits.length()){
             // 找到了和数字一样长的字符串了
             res.add(String.valueOf(temp));
