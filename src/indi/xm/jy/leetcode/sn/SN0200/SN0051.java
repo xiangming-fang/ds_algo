@@ -31,6 +31,9 @@ public class SN0051 {
         return res;
     }
 
+    // n 是 皇后的个数
+    // singleQueen 是满足条件的一种做法
+    // row 行高，控制递归深度
     private void dfs(int n, ArrayList<String> singleQueen,int row) {
 
         if (row >= n){
@@ -94,7 +97,7 @@ public class SN0051 {
     @Test
     public void test(){
 //        System.out.println(replace("....",0,'Q'));
-        List<List<String>> lists = solveNQueens(1);
+        List<List<String>> lists = solveNQueens(8);
         print(lists);
     }
 
