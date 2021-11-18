@@ -80,6 +80,11 @@ public class SN0977 {
         long end1 = System.currentTimeMillis();
         System.out.println("100000000 数据量 平方比较需要 " + (end1 - start1) + " 毫秒");
 
+        long start2 = System.currentTimeMillis();
+        sortedSquares01(array);
+        long end2 = System.currentTimeMillis();
+        System.out.println("100000000 数据量 排序依次来比较需要 " + (end2 - start2) + " 毫秒");
+
     }
 
     private int[] createArray(int numSize){
