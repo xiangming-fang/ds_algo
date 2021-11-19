@@ -3,21 +3,18 @@ package indi.xm.jy.leetcode.sn.SN0200;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @ProjectName: leetcode
  * @Package: indi.xm.jy.leetcode.sn.SN0200
- * @ClassName: SN0051
+ * @ClassName: SN0052
  * @Author: albert.fang
- * @Description: N皇后
- * @Date: 2021/11/12 9:43
+ * @Description: N皇后 II
+ * @Date: 2021/11/19 14:03
  */
-public class SN0051 {
-
-    List<List<String>> res = new ArrayList<>();
-
-    public List<List<String>> solveNQueens(int n) {
+public class SN0052 {
+    int res = 0;
+    public int totalNQueens(int n) {
         ArrayList<String> singleQueen = new ArrayList<String>(){{
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < n; i++) {
@@ -27,46 +24,36 @@ public class SN0051 {
                 add(sb.toString());
             }
         }};
-        dfs(n,singleQueen,0);
+        dfs(n,0,singleQueen);
         return res;
     }
 
-    // n 是 皇后的个数
-    // singleQueen 是满足条件的一种做法
-    // row 行高，控制递归深度
-    private void dfs(int n, ArrayList<String> singleQueen,int row) {
-
+    private void dfs(int n, int row, ArrayList<String> singleQueen) {
         if (row >= n){
-            res.add(new ArrayList<>(singleQueen));
+            res ++;
             return;
         }
-
-        for (int i = 0; i < n; i++) {
-            if (checkIllegal(singleQueen,i,row)){
-
-                String queen = replace(singleQueen.get(row), i, 'Q');
-                singleQueen.set(row,queen);
-
-                dfs(n,singleQueen,row + 1);
-
-                // 回溯
-                singleQueen.set(row,replace(singleQueen.get(row), i, '.'));
+        for (int col = 0; col < n; col++) {
+            if (checkIllegal(singleQueen,row,col)){
+                singleQueen.set(row,replace(singleQueen.get(row),col,'Q'));
+                dfs(n,row + 1,singleQueen);
+                singleQueen.set(row,replace(singleQueen.get(row),col,'.'));
             }
         }
     }
 
-    // 将 字符串的指定位置替换成指定的字符
-    private String replace(String s, int i, char c) {
-        int len = s.length();
-        String pre = s.substring(0, i);
-        String suffix = s.substring(i + 1, len);
+    // 将字符串target的指定位置index替换成字符c
+    private String replace(String target,int index,char c){
+        // 将指定index位置替换成 Q
+        String pre = target.substring(0, index);
+        String suffix = target.substring(index + 1);
         return pre + c + suffix;
     }
 
     // 合法 true 不合法 false
     // row 是第几行，是由递归控制的
     // col 是第几列，是有for循环控制的
-    private boolean checkIllegal(ArrayList<String> singleQueen, int col,int row) {
+    private boolean checkIllegal(ArrayList<String> singleQueen, int row,int col) {
         // 不合法的三种情况，同一横线，同一列、斜线上
         // 1、同一横线
         if (singleQueen.get(row).contains("Q")) {
@@ -96,18 +83,7 @@ public class SN0051 {
 
     @Test
     public void test(){
-//        System.out.println(replace("....",0,'Q'));
-        List<List<String>> lists = solveNQueens(8);
-        print(lists);
-        System.out.println(lists.size());
-    }
-
-    private void print(List<List<String>> arr){
-        for (List<String> strings : arr) {
-            for (String string : strings) {
-                System.out.println("[ " + string + " ]");
-            }
-            System.out.println("");
-        }
+//        System.out.println(replace("....", 0,'Q'));
+        System.out.println(totalNQueens(8));
     }
 }
