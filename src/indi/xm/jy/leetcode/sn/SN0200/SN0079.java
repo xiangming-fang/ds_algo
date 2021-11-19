@@ -29,6 +29,7 @@ public class SN0079 {
         rows = board.length;
         cols = board[0].length;
         visited = new boolean[rows][cols];
+        // 每个位置都 回溯 一遍
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (dfs(board,i,j,word,0)) {
@@ -36,14 +37,17 @@ public class SN0079 {
                 }
             }
         }
+        // 每个位置回溯之后还是没找到符合的，那么直接返回false
         return false;
     }
 
+    // row ,col 表示从那个位置开始回溯递归的
     private boolean dfs(char[][] board, int row, int col, String word, int index) {
 
         // index 控制找到的递归深度
-        if (index == word.length()){
-            return true;
+        if (index == word.length() - 1){
+            System.out.println("找到了~~~");
+            return word.charAt(index) == board[row][col];
         }
         System.out.println("比较 " + board[row][col]);
         if (word.charAt(index) == board[row][col]){
@@ -51,9 +55,11 @@ public class SN0079 {
             for (int i = 0; i < direction.length; i++) {
                 int newRow = row + direction[i][0];
                 int newCol = col + direction[i][1];
+                // 新位置合法，并且没有使用过
                 if (isValidPosition(newRow,newCol) && !visited[newRow][newCol]) {
-                    System.out.println( i + "比较 " + board[newRow][newCol]);
-                    return dfs(board,newRow,newCol,word,index + 1);
+                    if (dfs(board,newRow,newCol,word,index + 1)) {
+                        return true;
+                    }
                 }
             }
             visited[row][col] = false;
@@ -71,6 +77,12 @@ public class SN0079 {
     public void test(){
 //        StringUtils.replaceChar("[[\"A\",\"B\",\"C\",\"E\"],[\"S\",\"F\",\"C\",\"S\"],[\"A\",\"D\",\"E\",\"E\"]]",
 //                new char[]{'[',']','\"'},new char[]{'{','}','\''});
-        System.out.println(exist(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}},"ABCCED"));
+//        System.out.println(exist(new char[][]{{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}},"ABCCED"));
+        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+//        char[][] board = {{'A','b','c'}};
+        rows = board.length;
+        cols = board[0].length;
+        visited = new boolean[rows][cols];
+        System.out.println(dfs(board,0,0,"ABFCC",0));
     }
 }
