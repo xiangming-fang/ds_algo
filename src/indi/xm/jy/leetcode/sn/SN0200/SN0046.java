@@ -1,4 +1,4 @@
-package indi.xm.jy.leetcode.sn.SN0400;
+package indi.xm.jy.leetcode.sn.SN0200;
 
 import org.junit.Test;
 
