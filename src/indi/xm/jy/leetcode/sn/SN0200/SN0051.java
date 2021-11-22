@@ -66,7 +66,7 @@ public class SN0051 {
     // 合法 true 不合法 false
     // row 是第几行，是由递归控制的
     // col 是第几列，是有for循环控制的
-    private boolean checkIllegal(ArrayList<String> singleQueen, int col,int row) {
+    private boolean checkIllegal(ArrayList<String> singleQueen, int row,int col) {
         // 不合法的三种情况，同一横线，同一列、斜线上
         // 1、同一横线
         if (singleQueen.get(row).contains("Q")) {
@@ -97,9 +97,11 @@ public class SN0051 {
     @Test
     public void test(){
 //        System.out.println(replace("....",0,'Q'));
-        List<List<String>> lists = solveNQueens(8);
-        print(lists);
-        System.out.println(lists.size());
+//        List<List<String>> lists = solveNQueens(4);
+//        print(lists);
+//        System.out.println(lists.size());
+        print(getFourQueens());
+//        print(getFourQueens02());
     }
 
     private void print(List<List<String>> arr){
@@ -109,5 +111,78 @@ public class SN0051 {
             }
             System.out.println("");
         }
+    }
+
+    // 得到4皇后
+    private List<List<String>> getFourQueens(){
+        List<List<String>> lists = new ArrayList<>();
+
+        for (int i = 0; i < 4; i++) {
+            ArrayList<String> single = new ArrayList<String>(){{
+                add("....");
+                add("....");
+                add("....");
+                add("....");
+            }};
+            if (checkIllegal(single,0,i)){
+                single.set(0,replace(single.get(0),i,'Q'));
+                for (int j = 0; j < 4; j++) {
+                    if (checkIllegal(single,1,j)){
+                        single.set(1,replace(single.get(1),j,'Q'));
+                        for (int k = 0; k < 4; k++) {
+                            if (checkIllegal(single,2,k)){
+                                single.set(2,replace(single.get(2),k,'Q'));
+                                for (int l = 0; l < 4; l++) {
+                                    if (checkIllegal(single,3,l)){
+                                        single.set(3,replace(single.get(3),l,'Q'));
+                                        lists.add(single);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        return lists;
+    }
+
+    // 得到4皇后
+    private List<List<String>> getFourQueens02(){
+        List<List<String>> lists = new ArrayList<>();
+        ArrayList<String> single = new ArrayList<String>(){{
+            add("....");
+            add("....");
+            add("....");
+            add("....");
+        }};
+        for (int i = 0; i < 4; i++) {
+            if (checkIllegal(single,0,i)){
+                single.set(0,replace(single.get(0),i,'Q'));
+                for (int j = 0; j < 4; j++) {
+                    if (checkIllegal(single,1,j)){
+                        single.set(1,replace(single.get(1),j,'Q'));
+                        for (int k = 0; k < 4; k++) {
+                            if (checkIllegal(single,2,k)){
+                                single.set(2,replace(single.get(2),k,'Q'));
+                                for (int l = 0; l < 4; l++) {
+                                    if (checkIllegal(single,3,l)){
+                                        single.set(3,replace(single.get(3),l,'Q'));
+                                        lists.add(new ArrayList<>(single));
+                                        single.set(3,replace(single.get(3),l,'.'));
+                                    }
+                                }
+                                single.set(2,replace(single.get(2),k,'.'));
+                            }
+                        }
+                        single.set(1,replace(single.get(1),j,'.'));
+                    }
+
+                }
+                single.set(0,replace(single.get(0),i,'.'));
+            }
+        }
+        return lists;
     }
 }
