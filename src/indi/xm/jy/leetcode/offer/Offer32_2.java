@@ -13,7 +13,7 @@ import java.util.Queue;
  * @Package: indi.xm.jy.leetcode.offer
  * @ClassName: Offer32_2
  * @Author: albert.fang
- * @Description: 从上到下打印二叉树
+ * @Description: 从上到下打印二叉树 II
  * @Date: 2021/11/26 14:32
  */
 public class Offer32_2 {
