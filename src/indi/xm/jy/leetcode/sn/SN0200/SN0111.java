@@ -24,4 +24,25 @@ public class SN0111 {
         }
         return Math.min(minDepth(root.left),minDepth(root.right)) + 1;
     }
+
+    public int minDepth02(TreeNode root) {
+        return dfs(root);
+    }
+
+    private int dfs(TreeNode node) {
+        if (node == null){
+            return 0;
+        }
+        // 只有左右子树都为空才是高度
+        if (node.left == null && node.right == null){
+            return 1;
+        }
+        if (node.left == null){
+            return dfs(node.right) + 1;
+        }
+        if (node.right == null){
+            return dfs(node.left) + 1;
+        }
+        return Math.min(dfs(node.left),dfs(node.right)) + 1;
+    }
 }
