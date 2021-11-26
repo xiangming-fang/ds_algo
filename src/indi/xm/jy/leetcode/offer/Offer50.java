@@ -22,8 +22,10 @@ public class Offer50 {
     private int dfs(TreeNode node, int targetSum) {
         int res = 0;
         res += curNodeCount(node,targetSum);
-        res += curNodeCount(node.left,targetSum);
-        res += curNodeCount(node.right,targetSum);
+        if (node != null){
+            res += dfs(node.left,targetSum) ;
+            res += dfs(node.right,targetSum);
+        }
         return res;
     }
 
