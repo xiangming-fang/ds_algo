@@ -16,4 +16,9 @@ public class StringUtils {
         }
         System.out.println(str);
     }
+
+    public static void replaceArr(String str){
+        replaceChar(str,new char[]{'[',']'},
+                new char[]{'{','}'});
+    }
 }
