@@ -34,4 +34,20 @@ public class SN0997 {
         return res.get();
     }
 
+    // 入度、出度
+    public int findJudge02(int n, int[][] trust) {
+        int[] in = new int[n];
+        int[] out = new int[n];
+        for (int[] ints : trust) {
+            out[ints[0] - 1] ++;
+            in[ints[1] - 1] ++;
+        }
+        for (int i = 0; i < n; i++) {
+            if (out[i] == 0 && in[i] == n - 1) {
+                return i + 1;
+            }
+        }
+        return -1;
+    }
+
 }
