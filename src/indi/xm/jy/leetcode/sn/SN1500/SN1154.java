@@ -35,6 +35,6 @@ public class SN1154 {
 
     @Test
     public void test(){
-        System.out.println(dayOfYear("2000-12-04"));
+        System.out.println(dayOfYear("2021-12-21"));
     }
 }
