@@ -18,7 +18,7 @@ public class StringUtils {
     }
 
     public static void replaceArr(String str){
-        replaceChar(str,new char[]{'[',']'},
-                new char[]{'{','}'});
+        replaceChar(str,new char[]{'[',']','"','\n'},
+                new char[]{'{','}','\'',' '});
     }
 }

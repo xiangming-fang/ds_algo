@@ -11,29 +11,27 @@ import java.util.PriorityQueue;
 public class SN0603 {
 
     public int scheduleCourse(int[][] courses) {
-        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a,b) -> a[0] - b[0]);
-        minHeap.addAll(Arrays.asList(courses));
-        int count = 0;
-        int res = 0;
-        int len = minHeap.size();
-        for (int i = 0; i < len; i++) {
-            int[] poll = minHeap.poll();
-            res += poll[0];
-            if (res <= poll[1]){
-                count ++;
-            }
-            else {
-                break;
+        Arrays.sort(courses,(a,b) -> a[1] - b[1]);
+        // 最大堆
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a,b) -> b - a);
+        int sum = 0;
+        for (int[] cours : courses) {
+            int f = cours[0],s = cours[1];
+            sum += f;
+            maxHeap.add(f);
+            // 让maxheap 里的总和始终小于等于 s
+            if (sum > s) {
+                sum -= maxHeap.poll();
             }
         }
-        return count;
+        return maxHeap.size();
     }
 
     @Test
     public void test(){
 //        StringUtils.replaceArr("[[100, 200], [200, 1300], [1000, 1250], [2000, 3200]]");
 //        StringUtils.replaceArr("[[5,5],[4,6],[2,6]]");
-        System.out.println(scheduleCourse(new int[][]{{100, 200}, {200, 1300}, {1000, 1250}, {2000, 3200}}));
-//        System.out.println(scheduleCourse(new int[][]{{5,5},{4,6},{2,6}}));
+//        System.out.println(scheduleCourse(new int[][]{{100, 200}, {200, 1300}, {1000, 1250}, {2000, 3200}}));
+        System.out.println(scheduleCourse(new int[][]{{5,5},{4,6},{2,6}}));
     }
 }
