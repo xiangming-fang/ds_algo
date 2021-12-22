@@ -1,4 +1,4 @@
-package indi.xm.jy.leetcode.competition;
+package indi.xm.jy.leetcode.competition.th272;
 
 /**
  * @ProjectName: leetcode

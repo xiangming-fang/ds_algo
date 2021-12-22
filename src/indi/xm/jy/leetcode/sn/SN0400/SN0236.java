@@ -47,6 +47,30 @@ public class SN0236 {
         return isContainsNode(node.left,targetNode) || isContainsNode(node.right,targetNode);
     }
 
+    TreeNode ret;
+
+
+    // 判断这个节点是否包含p、q
+    public TreeNode lowestCommonAncestor02(TreeNode root, TreeNode p, TreeNode q) {
+        int a = dfs1(root,p,q);
+        return ret;
+    }
+
+    private int dfs1(TreeNode node, TreeNode p, TreeNode q){
+        if (node == null){
+            return 0;
+        }
+        int left =  dfs1(node.left,p,q);
+        int right = dfs1(node.right,p,q);
+        int self = node == p || node == q ? 1 : 0;
+
+        if (left + right + self == 2 && ret == null) {
+            ret = node;
+        }
+        return left + right + self;
+    }
+
+
 
     @Test
     public void test(){
