@@ -16,9 +16,18 @@ import java.util.ArrayList;
 public class SN0686 {
 
     public int repeatedStringMatch(String a, String b) {
-        int res = 0;
+        int res = 1;
         StringBuilder sb = new StringBuilder();
-
+        sb.append(a);
+        while (sb.length() < 2 * a.length() + b.length()){
+//            int subString = isSubString(sb.toString(), b);
+            int subString = sb.toString().indexOf(b);
+            if (subString != -1) {
+                return res;
+            }
+            res ++;
+            sb.append(a);
+        }
         return -1;
     }
 
@@ -79,7 +88,10 @@ public class SN0686 {
 
     @Test
     public void testDet(){
-        System.out.println(isSubString("cebeeebdeecaabb", "eb"));
+        System.out.println(repeatedStringMatch("abcd", "cdabcdab"));
+        System.out.println(repeatedStringMatch("a", "aa"));
+        System.out.println(repeatedStringMatch("a", "a"));
+        System.out.println(repeatedStringMatch("abc", "xyz"));
     }
 
 }
