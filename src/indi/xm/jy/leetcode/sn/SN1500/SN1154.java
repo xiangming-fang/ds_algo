@@ -35,6 +35,7 @@ public class SN1154 {
 
     @Test
     public void test(){
-        System.out.println(dayOfYear("2021-12-22") - dayOfYear("2021-10-05") + 1);
+//        System.out.println(dayOfYear("2021-12-22") - dayOfYear("2021-10-05") + 1);
+        System.out.println(1e5 + 10);
     }
 }

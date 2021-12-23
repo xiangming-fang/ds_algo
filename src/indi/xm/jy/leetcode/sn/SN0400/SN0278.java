@@ -37,6 +37,24 @@ public class SN0278 {
         return false;
     }
 
+    public int firstBadVersion02(int n) {
+
+        int left = 0,right = n - 1;
+        int mid;
+        int res = n;
+        while (left <= right){
+            mid = left + (right - left >> 1);
+            if (!isBadVersion(mid)){
+                left = mid + 1;
+            }
+            else{
+                res = Math.min(res,mid);
+                right = mid - 1;
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         System.out.println(2 >> 1);
     }
