@@ -1,6 +1,6 @@
 package indi.xm.jy.leetcode.sn.SN0600;
 
-import indi.xm.jy.leetcode.competition.th267.FriendCondition;
+import indi.xm.jy.leetcode.competition.weekcompetition.th267.FriendCondition;
 
 import java.util.HashMap;
 import java.util.Stack;

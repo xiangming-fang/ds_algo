@@ -1,11 +1,11 @@
-package indi.xm.jy.leetcode.competition.th267;
+package indi.xm.jy.leetcode.competition.weekcompetition.th267;
 
 import java.util.HashMap;
 import java.util.Stack;
 
 /**
  * @ProjectName: leetcode
- * @Package: indi.xm.jy.leetcode.competition.th267
+ * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th267
  * @ClassName: FriendCondition
  * @Author: albert.fang
  * @Description: 5929. 处理含限制条件的好友请求

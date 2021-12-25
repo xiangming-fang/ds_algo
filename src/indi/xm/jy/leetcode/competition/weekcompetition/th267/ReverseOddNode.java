@@ -1,11 +1,10 @@
-package indi.xm.jy.leetcode.competition.th267;
+package indi.xm.jy.leetcode.competition.weekcompetition.th267;
 
-import indi.xm.jy.leetcode.data_structure.ListNode;
 import org.junit.Test;
 
 /**
  * @ProjectName: leetcode
- * @Package: indi.xm.jy.leetcode.competition.th267
+ * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th267
  * @ClassName: ResverseOddNode
  * @Author: albert.fang
  * @Description: 5927. 反转偶数长度组的节点
