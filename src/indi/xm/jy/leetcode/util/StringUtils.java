@@ -24,6 +24,12 @@ public class StringUtils {
                 new char[]{'{','}','\'',' '});
     }
 
+    public static void replaceMid(String str){
+        replaceChar(str,new char[]{'[',']','\n'},
+                new char[]{'{','}',' '});
+    }
+
+
     /**
      * 生成随机字符串
      *
