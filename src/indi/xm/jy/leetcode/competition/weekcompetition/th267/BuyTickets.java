@@ -1,10 +1,10 @@
-package indi.xm.jy.leetcode.competition.th267;
+package indi.xm.jy.leetcode.competition.weekcompetition.th267;
 
 import org.junit.Test;
 
 /**
  * @ProjectName: leetcode
- * @Package: indi.xm.jy.leetcode.competition.th267
+ * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th267
  * @ClassName: BuyTickets
  * @Author: albert.fang
  * @Description: 5926. 买票需要的时间

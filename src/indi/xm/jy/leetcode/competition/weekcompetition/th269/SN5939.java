@@ -1,11 +1,6 @@
-package indi.xm.jy.leetcode.competition.th269;
+package indi.xm.jy.leetcode.competition.weekcompetition.th269;
 
 
-import org.junit.Test;
-import org.omg.CORBA.PRIVATE_MEMBER;
-
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 

@@ -1,7 +1,6 @@
-package indi.xm.jy.leetcode.competition.th66;
+package indi.xm.jy.leetcode.competition.oddweekcompetition.th66;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

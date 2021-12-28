@@ -1,4 +1,4 @@
-package indi.xm.jy.leetcode.competition.th269;
+package indi.xm.jy.leetcode.competition.weekcompetition.th269;
 
 import java.util.ArrayList;
 import java.util.Arrays;

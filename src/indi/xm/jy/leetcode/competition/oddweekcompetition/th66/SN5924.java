@@ -1,8 +1,6 @@
-package indi.xm.jy.leetcode.competition.th66;
+package indi.xm.jy.leetcode.competition.oddweekcompetition.th66;
 
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 // 5924. 网格图中机器人回家的最小代价
 public class SN5924 {

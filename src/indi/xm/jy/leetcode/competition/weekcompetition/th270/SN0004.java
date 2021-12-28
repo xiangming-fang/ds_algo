@@ -1,4 +1,4 @@
-package indi.xm.jy.leetcode.competition.th270;
+package indi.xm.jy.leetcode.competition.weekcompetition.th270;
 
 public class SN0004 {
 

@@ -1,12 +1,10 @@
-package indi.xm.jy.leetcode.competition.th267;
+package indi.xm.jy.leetcode.competition.weekcompetition.th267;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * @ProjectName: leetcode
- * @Package: indi.xm.jy.leetcode.competition.th267
+ * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th267
  * @ClassName: BiasEncode
  * @Author: albert.fang
  * @Description: 5928. 解码斜向换位密码

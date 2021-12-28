@@ -1,4 +1,4 @@
-package indi.xm.jy.leetcode.competition.th270;
+package indi.xm.jy.leetcode.competition.weekcompetition.th270;
 
 import indi.xm.jy.leetcode.data_structure.ListNode;
 
