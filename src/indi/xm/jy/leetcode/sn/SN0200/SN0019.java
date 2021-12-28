@@ -35,7 +35,7 @@ public class SN0019 {
     }
 
     // 双指针 之 前后指针
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode removeNthFromEnd01(ListNode head, int n) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode pre = dummy;
@@ -48,6 +48,26 @@ public class SN0019 {
             after = after.next;
         }
         after.next = after.next.next;
+        return dummy.next;
+    }
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head == null) return null;
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode s = dummy ,f = dummy;
+
+        // f先走n步
+        for (int i = 0; i < n; i++) {
+            f = f.next;
+        }
+        while (f != null){
+            f = f.next;
+            if ( f != null) s = s.next;
+        }
+        if (s.next != null){
+            s.next = s.next.next;
+        }
         return dummy.next;
     }
 

@@ -2,6 +2,8 @@ package indi.xm.jy.leetcode.sn.SN0600;
 
 import org.junit.Test;
 
+import java.util.Stack;
+
 /**
  * @ProjectName: leetcode
  * @Package: indi.xm.jy.leetcode.sn.SN0600
@@ -11,7 +13,7 @@ import org.junit.Test;
  * @Date: 2021/8/27 14:18
  */
 public class SN0557 {
-    public String reverseWords(String s) {
+    public String reverseWords01(String s) {
         String[] ns = s.split(" ");
         StringBuilder sb = new StringBuilder();
         for (String n : ns) {
@@ -34,6 +36,32 @@ public class SN0557 {
         char temp = s[l];
         s[l] = s[r];
         s[r] = temp;
+    }
+
+    public String reverseWords(String s) {
+
+        Stack<Character> stack = new Stack<>();
+        int p = 0;
+        StringBuilder ret = new StringBuilder();
+        while ( p < s.length() ){
+            char c = s.charAt(p++);
+            if ( c == ' '){
+                while (!stack.isEmpty()){
+                    ret.append(stack.pop());
+                }
+                ret.append(c);
+            }
+            else {
+                stack.push(c);
+            }
+        }
+
+        while (!stack.isEmpty()){
+            ret.append(stack.pop());
+        }
+
+        return ret.toString();
+
     }
 
     @Test

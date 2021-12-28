@@ -11,7 +11,7 @@ import org.junit.Test;
  * @Date: 2021/8/27 14:03
  */
 public class SN0344 {
-    public void reverseString(char[] s) {
+    public void reverseString01(char[] s) {
         int left = 0;
         int right = s.length - 1;
         while (left <= right){
@@ -27,6 +27,17 @@ public class SN0344 {
         s[l] = s[r];
         s[r] = temp;
     }
+
+    public void reverseString(char[] s) {
+        if (s == null || s.length == 1){
+            return;
+        }
+        int left = 0,right = s.length - 1;
+        while (left < right){
+            swap(s,left++,right--);
+        }
+    }
+
 
     @Test
     public void test(){

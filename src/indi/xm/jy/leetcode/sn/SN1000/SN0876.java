@@ -25,7 +25,7 @@ public class SN0876 {
     }
 
     // 双指针 之 快慢指针
-    public ListNode middleNode(ListNode head) {
+    public ListNode middleNode02(ListNode head) {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode fast = dummy;
@@ -38,6 +38,21 @@ public class SN0876 {
             slow = slow.next;
         }
         return slow;
+    }
+
+    public ListNode middleNode(ListNode head) {
+        if (head == null){
+            return null;
+        }
+        ListNode s = head;
+        ListNode f = head;
+        while (f != null){
+            f = f.next;
+            if (f != null) f = f.next;
+            else return s;
+            s = s.next;
+        }
+        return s;
     }
 
     public static void main(String[] args) {

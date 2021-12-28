@@ -39,7 +39,7 @@ public class SN0167 {
     }
 
     // 双指针,numbers 有序
-    public int[] twoSum(int[] numbers, int target) {
+    public int[] twoSum02(int[] numbers, int target) {
         int[] result = new int[2];
         int left = 0;
         int right = numbers.length - 1;
@@ -57,6 +57,22 @@ public class SN0167 {
             }
         }
         return result;
+    }
+
+    public int[] twoSum(int[] numbers, int target) {
+        int[] ret = new int[2];
+        int left = 0,right = numbers.length - 1;
+        while (left < right){
+            int temp = numbers[left] + numbers[right];
+            if (temp > target) right --;
+            else if (temp < target) left ++;
+            else {
+                ret[0] = left + 1;
+                ret[1] = right + 1;
+                break;
+            }
+        }
+        return ret;
     }
 
     @Test
