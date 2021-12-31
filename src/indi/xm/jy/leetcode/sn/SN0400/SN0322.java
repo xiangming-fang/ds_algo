@@ -2,6 +2,9 @@ package indi.xm.jy.leetcode.sn.SN0400;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @ProjectName: leetcode
  * @Package: indi.xm.jy.leetcode.sn.SN0400
