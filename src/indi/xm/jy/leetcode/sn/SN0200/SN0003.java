@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  * @problem-key: https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
  */
 public class SN0003 {
-    public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstring01(String s) {
         TreeSet<Character> set = new TreeSet<>();
         int right = -1;
         int res = 0;
@@ -75,6 +75,26 @@ public class SN0003 {
         }
 
         return maxLen;
+    }
+
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.equals("")) return 0;
+        int left = 0,right = 0;
+//        HashMap<Character, Integer> mem = new HashMap<>();
+        int[] mem = new int[26];
+        int res = 0;
+        while (left < s.length() && right < s.length()){
+            int index = s.charAt(right) - 'a';
+            if (mem[index] != 0){
+                res = Math.max(res,right - left);
+                left = mem[index] + 1;
+                mem[index] = right;
+            }else {
+                mem[index] = right;
+                right ++;
+            }
+        }
+        return res;
     }
 
     @Test
