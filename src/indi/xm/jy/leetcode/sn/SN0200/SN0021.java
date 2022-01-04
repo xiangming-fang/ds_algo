@@ -15,7 +15,8 @@ import java.util.Arrays;
  */
 public class SN0021 {
 
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2){
+    // 3、递归
+    public ListNode mergeTwoLists3(ListNode l1, ListNode l2){
         if (l1 == null){
             return l2;
         }
@@ -23,10 +24,10 @@ public class SN0021 {
             return l1;
         }
         if (l1.val <= l2.val){
-            l1.next = mergeTwoLists(l1.next,l2);
+            l1.next = mergeTwoLists3(l1.next,l2);
             return l1;
         }else {
-            l2.next = mergeTwoLists(l1,l2.next);
+            l2.next = mergeTwoLists3(l1,l2.next);
             return l2;
         }
     }
@@ -99,6 +100,25 @@ public class SN0021 {
         Integer[] result = LeetCodeUtil.mergeTwoArrays(l1_array,l2_array);
         Arrays.sort(result);
         return ListNodeUtil.generateListNode(result);
+    }
+
+    /******************* 2022-01-04 **************************/
+
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        return merge(list1,list2);
+    }
+
+    private ListNode merge(ListNode p, ListNode q) {
+        if (p == null) return q;
+        if (q == null) return p;
+
+        if (p.val <= q.val){
+            p.next = merge(p.next,q);
+            return p;
+        }
+
+        q.next = merge(p,q.next);
+        return q;
     }
 
 
