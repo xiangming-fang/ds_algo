@@ -17,7 +17,7 @@ public class SN0077 {
 
     List<List<Integer>> res = new ArrayList<>();
 
-    public List<List<Integer>> combine(int n, int k) {
+    public List<List<Integer>> combine01(int n, int k) {
         dfs(n,1,k,new ArrayList<>());
         return res;
     }
@@ -39,6 +39,27 @@ public class SN0077 {
 //            System.out.println("撤销一个： " + singleCombo.get(singleCombo.size() - 1));
             singleCombo.remove(singleCombo.size() - 1);
 //            System.out.println("当前单个是： " + singleCombo.toString());
+        }
+    }
+
+    /******************* 2022-01-04 **************************/
+
+    List<List<Integer>> ret = new ArrayList<>();
+
+    public List<List<Integer>> combine(int n, int k) {
+        dfs(n,k,new ArrayList<Integer>(),1);
+        return ret;
+    }
+
+    private void dfs(int n, int k, ArrayList<Integer> ans,int start) {
+        if (ans.size() == k){
+            ret.add(new ArrayList<>(ans));
+            return;
+        }
+        for (int i = start; i <= n; i++) {
+            ans.add(i);
+            dfs(n,k,ans,i + 1);
+            ans.remove(ans.size() - 1);
         }
     }
 
