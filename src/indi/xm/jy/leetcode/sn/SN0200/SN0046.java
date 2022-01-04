@@ -17,7 +17,7 @@ public class SN0046 {
 
     List<List<Integer>> res = new ArrayList<>();
 
-    public List<List<Integer>> permute(int[] nums) {
+    public List<List<Integer>> permute01(int[] nums) {
         dfs(nums,new ArrayList<>());
         return res;
     }
@@ -40,9 +40,38 @@ public class SN0046 {
         }
     }
 
+
+    /******************* 2022-01-04 **************************/
+
+    private boolean[] visited;
+
+    List<List<Integer>> ret = new ArrayList<>();
+
+    public List<List<Integer>> permute(int[] nums) {
+        visited = new boolean[nums.length];
+        dfs(new ArrayList<>(),nums);
+        return ret;
+    }
+
+    private void dfs(ArrayList<Integer> ans, int[] nums) {
+        if (ans.size() == nums.length) {
+            ret.add(new ArrayList<>(ans));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (!visited[i]){
+                visited[i] = true;
+                ans.add(nums[i]);
+                dfs(ans,nums);
+                visited[i] = false;
+                ans.remove(ans.size() - 1);
+            }
+        }
+    }
+
     @Test
     public void test(){
-//        System.out.println(permute(new int[]{1,2,3}));
-        System.out.println(permute(new int[]{1,1,2}));
+        System.out.println(permute(new int[]{1,2,3}));
+//        System.out.println(permute(new int[]{1,1,2}));
     }
 }
