@@ -1,5 +1,11 @@
 package indi.xm.jy.leetcode.sn.SN0600;
 
+import indi.xm.jy.leetcode.util.StringUtils;
+import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+
 /**
  * @ProjectName: leetcode
  * @Package: indi.xm.jy.leetcode.sn.SN0600
@@ -14,27 +20,40 @@ public class SN0542 {
     // 上右下左
     private int[][] direction = new int[][]{{-1,0},{0,1},{1,0},{0,-1}};
 
+    private boolean[][] visited;
+
     public int[][] updateMatrix(int[][] mat) {
         m = mat.length;
         n = mat[0].length;
-        for (int row = 0; row < m; row++) {
-            for (int col = 0; col < n; col++) {
-                if (mat[row][col] != 0)  dfs(mat,row,col);
+        visited = new boolean[m][n];
+
+
+        LinkedList<int[]> queue = new LinkedList<>();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] == 0) {
+                    queue.offer(new int[]{i,j});
+                    visited[i][j] = true;
+                }
+
             }
         }
-        return mat;
-    }
-
-    // 找到row,col这个位置距离0最近的距离是多少
-    private int dfs(int[][] mat, int row, int col) {
-        if (!isTruePos(row,col)) return 0;
-        if (mat[row][col] == 0) return 0;
-        int ret = 1;
-        for (int[] ans : direction) {
-            int newRow = row + ans[0];
-            int newCol = col + ans[1];
-            ret += dfs(mat,newRow,newCol);
+        int[][] ret = new int[m][n];
+        while (!queue.isEmpty()){
+            int[] poll = queue.poll();
+            int row = poll[0];
+            int col = poll[1];
+            for (int[] ints : direction) {
+                int newRow = ints[0] + row;
+                int newCol = ints[1] + col;
+                if (isTruePos(newRow,newCol) && !visited[newRow][newCol]){
+                    ret[newRow][newCol] = ret[row][col] + 1;
+                    queue.offer(new int[]{newRow,newCol});
+                    visited[newRow][newCol] = true;
+                }
+            }
         }
+
         return ret;
     }
 
@@ -43,4 +62,10 @@ public class SN0542 {
         return row >= 0 && row < m && col >=0 && col < n;
     }
 
+    @Test
+    public void test(){
+//        StringUtils.replaceArr("[[0,0,0],[0,1,0],[0,0,0]]");
+        int[][] ints = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+        System.out.println(Arrays.deepToString(updateMatrix(ints)));
+    }
 }
