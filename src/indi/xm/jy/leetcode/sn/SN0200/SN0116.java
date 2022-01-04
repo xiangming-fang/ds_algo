@@ -36,7 +36,7 @@ public class SN0116 {
         }
     }
 
-    public Node connect(Node root) {
+    public Node connect01(Node root) {
         if (root == null){
             return null;
         }
@@ -61,6 +61,31 @@ public class SN0116 {
         for (ArrayList<Node> singe : res) {
             for (int i = 0; i < singe.size() - 1; i++) {
                 singe.get(i).next = singe.get(i + 1);
+            }
+        }
+        return root;
+    }
+
+    /******************* 2022-01-04 **************************/
+
+    public Node connect(Node root) {
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            int len = queue.size();
+            Node pre = null;
+            for (int i = 0; i < len; i++) {
+                Node poll = queue.poll();
+                if (pre != null) {
+                    pre.next = poll;
+                    pre = poll;
+                }else {
+                    pre = poll;
+                }
+                if (poll != null) {
+                    if (poll.left != null) queue.offer(poll.left);
+                    if (poll.right != null) queue.offer(poll.right);
+                }
             }
         }
         return root;
