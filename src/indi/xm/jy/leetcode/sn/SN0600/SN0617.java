@@ -11,7 +11,8 @@ import indi.xm.jy.leetcode.data_structure.TreeNode;
  * @Date: 2021/9/1 18:42
  */
 public class SN0617 {
-    public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+
+    public TreeNode mergeTrees01(TreeNode root1, TreeNode root2) {
         // 终止条件
         // 1、要合并的两个节点都为null，那么返回null。
         if (root1 == null && root2 == null){
@@ -30,10 +31,26 @@ public class SN0617 {
         root1.val = root1.val + root2.val;
 
         // 5、更小问题
-        root1.left = mergeTrees(root1.left,root2.left);
-        root1.right = mergeTrees(root1.right,root2.right);
+        root1.left = mergeTrees01(root1.left,root2.left);
+        root1.right = mergeTrees01(root1.right,root2.right);
 
         return root1;
+    }
+
+    /******************* 2022-01-04 **************************/
+
+    public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+        return dfs(root1,root2);
+    }
+
+    private TreeNode dfs(TreeNode p, TreeNode q) {
+        if (p == null && q == null) return null;
+        if (p == null) return q;
+        if (q == null) return p;
+        p.val = p.val + q.val;
+        p.left = dfs(p.left,q.left);
+        p.right = dfs(p.right,q.right);
+        return p;
     }
 
 }
