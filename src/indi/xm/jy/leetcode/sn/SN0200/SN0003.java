@@ -1,5 +1,6 @@
 package indi.xm.jy.leetcode.sn.SN0200;
 
+import indi.xm.jy.leetcode.data_structure.array.Array;
 import org.junit.Test;
 
 import java.util.*;
@@ -8,7 +9,7 @@ import java.util.stream.Collectors;
 /**
  * @author: albert.fang
  * @date: 2021/5/7 14:18
- * @description: 无重复字符的最长子串
+ * @description: 3.无重复字符的最长子串
  * @link: https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
  * @problem-key: https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
  */
@@ -43,12 +44,13 @@ public class SN0003 {
         return ans;
     }
 
-    private static int solution03(String s){
+    // 我愿称之为最强
+    // 这里不能用数组代替hash表，因为不仅仅表示小写字母
+    public int lengthOfLongestSubstring(String s){
         HashMap<Character, Integer> map = new HashMap<>();
         int maxLen = 0;//用于记录最大不重复子串的长度
         int left = 0;//滑动窗口左指针
-        for (int i = 0; i < s.length() ; i++)
-        {
+        for (int i = 0; i < s.length() ; i++) {
             /**
              1、首先，判断当前字符是否包含在map中，如果不包含，将该字符添加到map（字符，字符在数组下标）,
              此时没有出现重复的字符，左指针不需要变化。此时不重复子串的长度为：i-left+1，与原来的maxLen比较，取最大值；
@@ -65,8 +67,7 @@ public class SN0003 {
              另外，更新left后，不管原来的 s.charAt(i) 是否在最长子段中，我们都要将 s.charAt(i) 的位置更新为当前的i，
              因此此时新的 s.charAt(i) 已经进入到 当前最长的子段中！
              */
-            if(map.containsKey(s.charAt(i)))
-            {
+            if(map.containsKey(s.charAt(i))) {
                 left = Math.max(left , map.get(s.charAt(i))+1);
             }
             //不管是否更新left，都要更新 s.charAt(i) 的位置！
@@ -77,28 +78,10 @@ public class SN0003 {
         return maxLen;
     }
 
-    public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.equals("")) return 0;
-        int left = 0,right = 0;
-//        HashMap<Character, Integer> mem = new HashMap<>();
-        int[] mem = new int[26];
-        int res = 0;
-        while (left < s.length() && right < s.length()){
-            int index = s.charAt(right) - 'a';
-            if (mem[index] != 0){
-                res = Math.max(res,right - left);
-                left = mem[index] + 1;
-                mem[index] = right;
-            }else {
-                mem[index] = right;
-                right ++;
-            }
-        }
-        return res;
-    }
-
     @Test
     public void test(){
-        System.out.println(lengthOfLongestSubstring("pwwkew"));
+//        System.out.println(lengthOfLongestSubstring("pwwkew"));
+//        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring(" "));
     }
 }
