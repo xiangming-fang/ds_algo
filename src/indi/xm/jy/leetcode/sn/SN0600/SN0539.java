@@ -15,6 +15,8 @@ import java.util.List;
 public class SN0539 {
     public int findMinDifference(List<String> timePoints) {
 
+        if (timePoints.size() > 1440) return 0;
+
         int[] ans = new int[timePoints.size()];
         for (int i = 0; i < timePoints.size(); i++) {
             String[] aa = timePoints.get(i).split(":");
