@@ -84,6 +84,6 @@ public class SN0052 {
     @Test
     public void test(){
 //        System.out.println(replace("....", 0,'Q'));
-        System.out.println(totalNQueens(8));
+        System.out.println(totalNQueens(10));
     }
 }
