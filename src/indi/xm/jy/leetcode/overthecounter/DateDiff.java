@@ -149,6 +149,12 @@ public class DateDiff {
         dataDiff(new int[]{2005,1,25},new int[]{2022,3,30});
         dataDiff(new int[]{1964,7,22},new int[]{2022,3,30});
         dataDiff(new int[]{2022,3,30},new int[]{1997,9,30});
+        dataDiff(new int[]{2022,3,30},new int[]{1975,11,21});
+        dataDiff(new int[]{2022,3,31},new int[]{1996,9,8});
+        System.out.println((double)21070 / 365);
+        System.out.println((double)8947 / 365);
+        System.out.println((double)6273 / 365);
+        System.out.println((double)9335 / 365);
     }
 
 }
