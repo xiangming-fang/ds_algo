@@ -1,5 +1,6 @@
 package indi.xm.jy.leetcode.sn.SN0200;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -43,6 +44,25 @@ public class SN0003_1 {
                 res = Math.max(res,i - pre);
             }
             map.put(c,i);
+        }
+        return res;
+    }
+
+    public int lengthOfLongestSubstring01(String s) {
+        int res = 0;
+        int[] map = new int[256];
+        Arrays.fill(map,-1);
+        int pre = -1;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (map[c] != -1) {
+                int max = Math.max(map[c], pre);
+                res = Math.max(res,i - max);
+                pre = max;
+            }else {
+                res = Math.max(res,i - pre);
+            }
+            map[c] = i;
         }
         return res;
     }
