@@ -60,8 +60,39 @@ public class SN0004 {
         return index >= 0 && index < arr.length;
     }
 
+    public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        boolean flag = ((nums1.length + nums2.length) & 1) == 0;
+        int avgLen = flag ? (nums1.length + nums2.length) / 2 : (nums1.length + nums2.length) / 2 + 1;
+        for (int i : nums1) {
+            if (maxHeap.size() < avgLen){
+                maxHeap.add(i);
+            }else {
+                if (maxHeap.peek() >= i){
+                    minHeap.add(maxHeap.poll());
+                    maxHeap.add(i);
+                }else {
+                    minHeap.add(i);
+                }
+            }
+        }
+        for (int i : nums2) {
+            if (maxHeap.peek() >= i){
+                minHeap.add(maxHeap.poll());
+                maxHeap.add(i);
+            }else {
+                minHeap.add(i);
+            }
+        }
+        if (flag){
+            return (maxHeap.peek() + minHeap.peek()) / 2.0;
+        }
+        return maxHeap.peek();
+    }
+
     @Test
     public void test(){
-        System.out.println(findMedianSortedArrays(new int[]{1, 3}, new int[]{2, 3}));
+        System.out.println(findMedianSortedArrays2(new int[]{1, 3}, new int[]{2, 3}));
     }
 }
