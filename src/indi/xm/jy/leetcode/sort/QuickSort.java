@@ -9,7 +9,7 @@ import java.util.Random;
  * @Package: com.xm.jy.sort
  * @ClassName: QuickSort
  * @Author: albert.fang
- * @Description: 快排
+ * @Description: 快 排
  * @Date: 2021/9/6 15:52
  */
 public class QuickSort {
