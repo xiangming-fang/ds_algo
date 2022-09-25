@@ -91,6 +91,25 @@ public class SN0004 {
         return maxHeap.peek();
     }
 
+    public double findMedianSortedArrays3(int[] nums1, int[] nums2){
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a,b) -> b - a);
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        int[] mergeNums = new int[nums1.length + nums2.length];
+        System.arraycopy(nums1,0,mergeNums,0,nums1.length);
+        System.arraycopy(nums2,0,mergeNums,nums1.length,nums2.length);
+        for (int mergeNum : mergeNums) {
+            maxHeap.add(mergeNum);
+            minHeap.add(maxHeap.remove());
+            if (minHeap.size() > maxHeap.size()){
+                maxHeap.add(minHeap.remove());
+            }
+        }
+        if (maxHeap.size() == minHeap.size()){
+            return (maxHeap.peek() + minHeap.peek()) / 2.0;
+        }
+        return maxHeap.peek();
+    }
+
     @Test
     public void test(){
         System.out.println(findMedianSortedArrays2(new int[]{1, 3}, new int[]{2, 3}));
