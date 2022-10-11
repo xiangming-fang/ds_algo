@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @Package: indi.xm.jy.leetcode.sn.SN0200
  * @ClassName: SN0052
  * @Author: albert.fang
- * @Description: N皇后 II
+ * @Description:  II
  * @Date: 2021/11/19 14:03
  */
 public class SN0052 {
