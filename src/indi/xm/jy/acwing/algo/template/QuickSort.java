@@ -36,12 +36,4 @@ public class QuickSort {
         quickSort(arr,j + 1,r);
     }
 
-    @Test
-    public void test(){
-        int[] arr = {3, 5, 6, 4, 7, 10, 9};
-        quickSort(arr,0,arr.length - 1);
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
-    }
 }
