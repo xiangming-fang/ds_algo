@@ -22,15 +22,13 @@ public class SN0003 {
         int[][] ints = new int[nums.length][2];
         long res = 0;
         long len = nums.length;
+        long total = 0;
         for (int i = 0; i < len; i++) {
+            total += cost[i];
             ints[i][0] = nums[i];
             ints[i][1] = cost[i];
         }
         Arrays.sort(ints, Comparator.comparingInt(a -> a[0]));
-        long total = 0;
-        for (int j : cost) {
-            total += j;
-        }
         long midIndex = 0;
         long mid = 0;
         for (int[] anInt : ints) {
