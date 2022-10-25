@@ -20,6 +20,7 @@ public class SN0004 {
     // 提示2：题目说的 +-2,奇数+-2还是奇数，偶数+-2还是偶数，所以我们这里需要对奇偶数进行区分
     // 看见这种每次操作+-2，+-3的，首先应该考虑到分组
     // 题目说的保证有答案，所以说nums、target两个数组中的奇偶数个数是一样的。
+    // 所以这题应该先对nums和target里的元素进行奇偶区分,然后计算每个对应元素的变化量，将最后结果 / 4 返回
     public long makeSimilar(int[] nums, int[] target) {
         long ans = 0;
         ArrayList<Integer> even = new ArrayList<>();
