@@ -12,20 +12,17 @@ import org.junit.Test;
  */
 public class QuickSort {
 
+    // 分治法
+    // 确定分界点，通常是arr[l]、arr[r]、arr[l + (r-l)/2]
+    // 小于等于 分界点的放左边
+    // 大于等于 分界点的放右边
     public void quickSort(int[] arr,int l,int r){
-        if ( l >= r ) {
-            return;
-        }
+        if ( l >= r ) return;
         int i = l - 1,j = r + 1;
         int x = arr[l];
         while ( i < j ){
-            do {
-                i ++;
-            }while (arr[i] < x);
-            do {
-                j --;
-            }while (arr[j] > x);
-
+            do i ++; while (arr[i] < x);
+            do j --; while (arr[j] > x);
             if (i < j){
                 int temp = arr[i];
                 arr[i] = arr[j];
