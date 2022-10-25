@@ -14,6 +14,7 @@ public class MergeSort {
 
     // 分治法
     // 确认分界点：mid = l + (r-l)/2
+    // 递归(l,mid)、(mid+1,r)
     // 归并左右两个有序数组
     public void mergeSort(int[] arr,int l,int r){
         if ( l >= r ) return;

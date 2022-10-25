@@ -24,13 +24,14 @@ public class Main {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = Integer.parseInt(strs[i]);
         }
-        quickSort(arr,0,n - 1);
+        quickSort(arr,0,n - 1,k);
         System.out.print(arr[k - 1]);
     }
 
-    private static void quickSort(int[] arr, int l, int r) {
+    // 快选 -> 近似1/2 的快排
+    private static int quickSort(int[] arr, int l, int r,int k) {
         if (l >= r) {
-            return;
+            return arr[l];
         }
         int x = arr[l];
         int i = l - 1, j = r + 1;
@@ -47,7 +48,8 @@ public class Main {
                 arr[j] = temp;
             }
         }
-        quickSort(arr,l,j);
-        quickSort(arr,j + 1,r);
+        int leftLen = j - l + 1;
+        if (k <= leftLen) return quickSort(arr,l,j,k);
+        else return quickSort(arr,j + 1,r,k-leftLen);
     }
 }

@@ -16,6 +16,7 @@ public class QuickSort {
     // 确定分界点，通常是arr[l]、arr[r]、arr[l + (r-l)/2]
     // 小于等于 分界点的放左边
     // 大于等于 分界点的放右边
+    // 递归排序左边，递归排序右边
     public void quickSort(int[] arr,int l,int r){
         if ( l >= r ) return;
         int i = l - 1,j = r + 1;
