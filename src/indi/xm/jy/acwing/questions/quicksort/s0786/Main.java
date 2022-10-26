@@ -1,4 +1,4 @@
-package indi.xm.jy.acwing.questions.s0785;
+package indi.xm.jy.acwing.questions.quicksort.s0786;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,33 +6,35 @@ import java.io.InputStreamReader;
 
 /**
  * @ProjectName: leetcode
- * @Package: indi.xm.jy.acwing.questions.s0789
+ * @Package: indi.xm.jy.acwing.questions.s0786
  * @ClassName: Main
  * @Author: albert.fang
- * @Description: 快排
- * @Date: 2022/10/24 18:52
+ * @Description: 第k小的数
+ * @Date: 2022/10/24 22:02
  */
 public class Main {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        String first = br.readLine();
+        int n = Integer.parseInt(first.split(" ")[0]);
+        int k = Integer.parseInt(first.split(" ")[1]);
         int[] arr = new int[n];
         String[] strs = br.readLine().split(" ");
         for (int i = 0; i < arr.length; i++) {
             arr[i] = Integer.parseInt(strs[i]);
         }
-        quickSort(arr, 0, arr.length - 1);
-        for (int i : arr) {
-            System.out.println(i + " ");
-        }
+        quickSort(arr,0,n - 1,k);
+        System.out.print(arr[k - 1]);
     }
 
-    public static void quickSort(int[] arr, int l, int r) {
-        if ( l >= r){
-            return;
+    // 快选 -> 近似1/2 的快排
+    private static int quickSort(int[] arr, int l, int r,int k) {
+        if (l >= r) {
+            return arr[l];
         }
         int x = arr[l];
-        int i = l - 1,j = r + 1;
+        int i = l - 1, j = r + 1;
         while (i < j){
             do {
                 i ++;
@@ -46,7 +48,8 @@ public class Main {
                 arr[j] = temp;
             }
         }
-        quickSort(arr,l,j);
-        quickSort(arr,j + 1,r);
+        int leftLen = j - l + 1;
+        if (k <= leftLen) return quickSort(arr,l,j,k);
+        else return quickSort(arr,j + 1,r,k-leftLen);
     }
 }
