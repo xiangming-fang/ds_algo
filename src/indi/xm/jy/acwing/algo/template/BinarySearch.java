@@ -10,7 +10,7 @@ package indi.xm.jy.acwing.algo.template;
  */
 public class BinarySearch {
 
-    // bs 有两个模板，y总说这两个模板在它目前刷题而言，适用于所有二分
+    // bs 整数二分有两个模板，y总说这两个模板在它目前刷题而言，适用于所有整数二分
     // 1、二分的时候当 l=mid,那么r一定等于mid-1,并且 mid 需要补偿1。
     // 2、二分的时候当 r=mid,那么l一定等于mid+1。
     // 记忆方式：男左女友，男的多一杆枪，需要加1；女的不需要或者减去1.
@@ -31,6 +31,21 @@ public class BinarySearch {
             else r = mid - 1;
         }
         return l;
+    }
+
+    // 浮点数二分模板
+    // 保留n位小数,这里假设保留6位 经验值 1e-(n+2)，所以这里是-8
+    public double floatBs(double l,double r,double x){
+        while ( r - l > 1e-8){
+            double mid = l + (r-l)/2;
+            if (check(l)) l = mid;
+            else r = mid;
+        }
+        return l;
+    }
+
+    private boolean check(double l) {
+        return false;
     }
 
     private boolean check(int i) {

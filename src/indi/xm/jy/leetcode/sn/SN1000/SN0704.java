@@ -57,6 +57,19 @@ public class SN0704 {
         return -1;
     }
 
+    // 整数二分模板
+    public int search1(int[] nums, int target) {
+        return bs(nums,0,nums.length - 1,target);
+    }
+
+    private int bs(int[] nums, int l, int r, int target) {
+        while (l < r){
+            int mid = l + (r-l)/2;
+            if (nums[mid] >= target) r = mid;
+            else l = mid + 1;
+        }
+        return nums[l] == target ? l : -1;
+    }
 
 
     @Test
