@@ -1,6 +1,9 @@
 package indi.xm.jy.acwing.algo.template;
 
+import javafx.util.Pair;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @ProjectName: leetcode
@@ -11,6 +14,9 @@ import java.util.ArrayList;
  * @Date: 2022/10/26 14:03
  */
 public class BigInt {
+
+    // 总结
+    // 1、高精度 +-*/ 只有加法没有前置0，不需要去除
 
     // 高精度a + 高精度b
     public ArrayList<Integer> add(ArrayList<Integer> a,ArrayList<Integer> b){
@@ -68,6 +74,23 @@ public class BigInt {
         }
         while(ans.size() > 1 && ans.get(ans.size() - 1) == 0) ans.remove(ans.size() - 1);
         return ans;
+    }
+
+    // 高精度 a / 低精度B
+    // B 一定不为0，返回商和余数
+    public Pair<ArrayList<Integer>,Integer> div(ArrayList<Integer> a, int B){
+        // 余数
+        int tmp = 0;
+        ArrayList<Integer> ans = new ArrayList<>();
+        for (int i = a.size() - 1; i >= 0; i--) {
+            tmp = tmp * 10 + a.get(i);
+            ans.add(tmp/B);
+            tmp %= B;
+        }
+        // 这步的目的是为了让加减乘除四种运算可以混用，在数组的存储方式是一致的
+        Collections.reverse(ans);
+        while (ans.size() > 1 && ans.get(ans.size() - 1) == 0) ans.remove(ans.size() - 1);
+        return new Pair<>(ans,tmp);
     }
 
 
