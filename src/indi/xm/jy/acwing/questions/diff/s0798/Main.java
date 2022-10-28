@@ -20,9 +20,9 @@ public class Main {
         int n = Integer.parseInt(f[0]);
         int m = Integer.parseInt(f[1]);
         int q = Integer.parseInt(f[2]);
-        int[][] a = new int[n + 1][m + 1];
+        int[][] a = new int[n + 10][m + 10];
         // 差分数组
-        int[][] b = new int[n + 1][m + 1];
+        int[][] b = new int[n + 10][m + 10];
         for (int i = 1; i <= n; i++) {
             String[] sec = br.readLine().split(" ");
             for (int j = 1; j <= m; j++) {
@@ -50,9 +50,9 @@ public class Main {
     }
 
     private static void insert(int x1, int y1, int x2, int y2, int c, int[][] b) {
-        if (x1 < b.length && y1 < b[0].length ) b[x1][y1] += c;
-        if (x2 + 1 < b.length && y2 + 1 < b[0].length )b[x2+1][y2+1] += c;
-        if (x1 < b.length && y2 + 1 < b[0].length )b[x1][y2+1] -= c;
-        if (x2 + 1 < b.length && y1 < b[0].length )b[x2+1][y1] -= c;
+        b[x1][y1] += c;
+        b[x2+1][y2+1] += c;
+        b[x1][y2+1] -= c;
+        b[x2+1][y1] -= c;
     }
 }
