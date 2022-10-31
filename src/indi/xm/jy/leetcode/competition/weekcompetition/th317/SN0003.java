@@ -25,26 +25,25 @@ public class SN0003 {
     // 将小于index部分加1，即2049+1 = 2050
     // 将大于index的部分全部置为0,即00000
     // 组合左边右边答案：2050 00000
-    // 最小增量为：205000000 - 204932336 = 67664.
+    // 重要：到这里我们可以得到答案是205000000，貌似已经有结果了，可是我们还需要进行对这个数累加判断和是否存在大于16的情况
+    // 如果依然大于16，那么重复以上步骤，如果小于等于16了，那么最小增量为：205000000 - 204932336 = 67664.
     public long makeIntegerBeautiful(long n, int target) {
-        long res = 0;
         if (getSumByBit(n) <= target) return 0;
         List<Integer> numBit = getNumBit(n);
         int s = 0,index = 0;
+        // 1、找到累加大于target的位置index
         for (int i = numBit.size() - 1; i >= 0; i--) {
             s += numBit.get(i);
             if (s > target) {
-                // 0 - i位置变成0
                 index = i;
                 break;
             }
         }
-        for (int i = 0; i <= index; i++) {
-            numBit.set(i,0);
-        }
+        // 2、将0-index位置设为0
+        for (int i = 0; i <= index; i++)  numBit.set(i,0);
+        // 3、大于index的位置加1
         int tmp = 1;
         for (int j = index + 1;j <= numBit.size(); j++){
-
             if (j < numBit.size()) {
                 tmp = numBit.get(j) + tmp;
                 numBit.set(j,tmp%10);
@@ -54,16 +53,15 @@ public class SN0003 {
             if (tmp >= 10) tmp/=10;
             else break;
         }
-        while (numBit.size() > 1 && numBit.get(numBit.size() - 1) == 0) numBit.remove(numBit.size() - 1);
         StringBuilder stringBuilder = new StringBuilder();
+        // 4、将numbit中的数反转，得到我们常规的十进制表示
         Collections.reverse(numBit);
-        for (int integer : numBit) {
-            stringBuilder.append(integer);
-        }
+        for (int integer : numBit) stringBuilder.append(integer);
         long l = Long.parseLong(stringBuilder.toString());
-        if (getSumByBit(n) > target) {
-            return l - n +makeIntegerBeautiful(l,target);
-        }
+
+        // 5、对处理一次的数进行判断是否符合，如果不符合需要进行重复上面1-4的步骤
+        if (getSumByBit(n) > target) return l - n +makeIntegerBeautiful(l,target);
+
         return l - n;
     }
 

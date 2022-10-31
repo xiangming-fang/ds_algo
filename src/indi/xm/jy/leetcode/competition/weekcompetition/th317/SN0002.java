@@ -10,11 +10,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th001
  * @ClassName: SN0001
  * @Author: albert.fang
- * @Description:
+ * @Description: 最流行的视频创作者
  * @Date: 2022/10/21 16:26
  */
 public class SN0002 {
 
+    // 思路：直接模拟
+    // 用
     public List<List<String>> mostPopularCreator(String[] creators, String[] ids, int[] views) {
         HashMap<String, Integer> a = new HashMap<>();
         HashMap<String, String> b = new HashMap<>();
