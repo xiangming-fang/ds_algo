@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @Description: 去掉子树之后的高度
  * @Date: 2022/10/31 13:41
  */
-public class SN004_1 {
+public class SN0004_1 {
 
     // 1、寻找重链元素
     // 2、如果查找的元素不在重链中，则不影响原先高度
@@ -32,7 +32,7 @@ public class SN004_1 {
         nodeHeightMap.put(root.val,new Pair<>(rootH,root));
         // Key -> height; value -> cnt;
         HashMap<Integer, Integer> heavyNodeMap = new HashMap<>();
-        int[] exist = new int[10010];
+        int[] exist = new int[100010];
         for (Integer heavyNode : heavyNodes) {
             Integer height = nodeHeightMap.get(heavyNode).getKey();
             heavyNodeMap.put(height,heavyNodeMap.getOrDefault(height,0) + 1);
