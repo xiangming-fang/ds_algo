@@ -18,7 +18,7 @@ public class SN0002 {
     // 1、用遍历creators和views，ids，得到一个map1为：key -> creator,value -> 播放总量；还能得到一个map2为：key -> creator,value -> {index1,index2……}
     // 2、遍历map1，得到得到最大的播放总量为max
     // 3、再次遍历map1,筛选播放量等于max的key，用这个key去map2查找｛index1,index2……}
-    // 4、遍历{index1,index2……} => 用index去取views数组取最大的max，并且这个max在ids数组里最小的id
+    // 4、遍历{index1,index2……} => 用index去取views数组取最大的max，并且这个max对应下标index在ids数组里是最小的id
     public List<List<String>> mostPopularCreator(String[] creators, String[] ids, int[] views) {
         HashMap<String, Long> map1 = new HashMap<>();
         HashMap<String, List<Integer>> map2 = new HashMap<>();
