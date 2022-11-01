@@ -40,6 +40,7 @@ public class SN0004_2 {
             int k = heavyNode[cur];
             max = Math.max(max,nodeHeight[nodeSons[cur][k ^ 1]] + height);
             answers[nodeSons[cur][k]] = max;
+            // 下一个重链节点
             cur = nodeSons[cur][k];
         }
 
