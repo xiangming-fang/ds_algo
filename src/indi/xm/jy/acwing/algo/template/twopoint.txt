@@ -1,6 +1,6 @@
 双指针算法模板:
 
-for ( i = 0; i <= N; i++){
+for ( i = 0,j = 0; i <= N; i++){
     while( j < i && check(i,j) ) j++;
     // 具体逻辑
 }
