@@ -1,4 +1,4 @@
-package indi.xm.jy.acwing.questions.discretization.s0759;
+package indi.xm.jy.acwing.questions.regionmerge.s0759;
 
 import java.io.BufferedReader;
 import java.io.IOException;
