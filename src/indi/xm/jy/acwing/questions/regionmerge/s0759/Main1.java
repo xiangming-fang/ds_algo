@@ -31,7 +31,6 @@ public class Main1 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        HashSet<String> set = new HashSet<>();
         List<Region> rows = new ArrayList<>();
         List<Region> cols = new ArrayList<>();
         for (int i = 0; i < n; i++) {
