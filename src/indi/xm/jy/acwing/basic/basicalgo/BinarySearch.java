@@ -15,19 +15,21 @@ public class BinarySearch {
     // 2、二分的时候当 r=mid,那么l一定等于mid+1。
     // 记忆方式：男左女友，男的多一杆枪，需要加1；女的不需要或者减去1.
 
-    public int binarySearch(int[] arr,int l,int r){
+    // 1、左边第一个x; r = mid
+    public int binarySearch(int[] arr,int l,int r,int x){
         while (l < r){
             int mid = l + (r-l)/2;
-            if (check(arr[mid])) r = mid;
+            if (arr[mid] <= x) r = mid;
             else l = mid + 1;
         }
         return l;
     }
 
-    public int bs(int[] arr,int l,int r){
+    // 2、右边最后一个x; l = mid
+    public int bs(int[] arr,int l,int r,int x){
         while (l < r){
             int mid = l + (r-l+1)/2;
-            if (check(arr[mid])) l = mid;
+            if (arr[mid] >= x) l = mid;
             else r = mid - 1;
         }
         return l;
