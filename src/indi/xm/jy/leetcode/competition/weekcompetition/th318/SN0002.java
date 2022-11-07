@@ -12,7 +12,7 @@ import org.junit.Test;
  */
 public class SN0002 {
 
-    // 前缀和 + 最大无重复子串
+    // 前缀和 + 双指针找 最大无重复子串 截取k
     public long maximumSubarraySum(int[] nums, int k) {
         long  res = 0;
         if (k > nums.length) return res;

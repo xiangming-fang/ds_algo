@@ -1,4 +1,4 @@
-package indi.xm.jy.acwing.algo.template;
+package indi.xm.jy.acwing.basic.basicalgo;
 
 /**
  * @ProjectName: leetcode
