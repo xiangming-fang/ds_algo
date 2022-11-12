@@ -1,4 +1,4 @@
-package indi.xm.jy.competition.weekcompetition.th001;
+package indi.xm.jy.competition.template;
 
 /**
  * @ProjectName: leetcode
@@ -8,5 +8,5 @@ package indi.xm.jy.competition.weekcompetition.th001;
  * @Description:
  * @Date: 2022/10/21 16:26
  */
-public class SN0002 {
+public class SN0003 {
 }
