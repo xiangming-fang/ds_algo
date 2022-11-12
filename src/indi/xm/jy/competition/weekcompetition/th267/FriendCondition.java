@@ -1,36 +1,54 @@
-package indi.xm.jy.leetcode.sn.SN0600;
+package indi.xm.jy.competition.weekcompetition.th267;
 
 import java.util.HashMap;
 import java.util.Stack;
 
 /**
  * @ProjectName: leetcode
- * @Package: indi.xm.jy.leetcode.sn.SN0600
- * @ClassName: SN0547
+ * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th267
+ * @ClassName: FriendCondition
  * @Author: albert.fang
- * @Description: 547. 省份数量
- * @Date: 2021/12/20 10:14
+ * @Description: 5929. 处理含限制条件的好友请求
+ * @Date: 2021/11/14 13:07
  */
-public class SN0547 {
-    
-    public int findCircleNum(int[][] isConnected) {
-        int len = isConnected.length;
-        Integer[] arr = new Integer[len];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = i;
-        }
-        UnionFind<Integer> uf = new UnionFind<>(arr);
+public class FriendCondition {
 
-        for (int row = 0; row < isConnected.length; row++) {
-            for (int col = 0; col < isConnected[row].length; col++) {
-                if (isConnected[row][col] == 1){
-                    uf.union(row,col);
+    public boolean[] friendRequests(int n, int[][] restrictions, int[][] requests) {
+        Integer[] ints = new Integer[n];
+        for (int i = 0; i < ints.length; i++) {
+            ints[i] = i;
+        }
+        UnionFind<Integer> friends = new UnionFind<>(ints);
+
+
+        boolean[] res = new boolean[requests.length];
+
+        for (int i = 0; i < requests.length; i++) {
+            boolean flag = false;
+            // 在同一个集合中，是一个朋友
+            if (friends.isSameSet(requests[i][0],requests[i][1])){
+                res[i] = true;
+            }
+            else {
+                for (int[] restriction : restrictions) {
+                    if (friends.isSameSet(requests[i][0],restriction[0]) && friends.isSameSet(requests[i][1],restriction[1])){
+                        res[i] = false;
+                        flag = true;
+                        break;
+                    }
+                    if (friends.isSameSet(requests[i][0],restriction[1]) && friends.isSameSet(requests[i][1],restriction[0])){
+                        res[i] = false;
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    friends.union(requests[i][0],requests[i][1]);
+                    res[i] = true;
                 }
             }
         }
-
-        return uf.getSetSize();
-
+        return res;
     }
 
     class UnionFind<T> {
@@ -44,13 +62,13 @@ public class SN0547 {
         }
 
         // key -> 类型值，value -> 包过类型值的node
-        private HashMap<T, Node> nodeMap = new HashMap<>();
+        private HashMap<T,Node> nodeMap = new HashMap<>();
 
         // key -> 顶部节点，value -> 这个顶部节点里包含多少个节点
         private HashMap<Node,Integer> countMap = new HashMap<>();
 
         // key -> 节点，value -> 节点所对应的父亲节点
-        private HashMap<Node, Node> parentMap = new HashMap<>();
+        private HashMap<Node,Node> parentMap = new HashMap<>();
 
         public UnionFind(T[] arr){
             for (T t : arr) {
@@ -95,10 +113,6 @@ public class SN0547 {
 
         }
 
-        public int getSetSize(){
-            return countMap.size();
-        }
-
         private Node findTopNode(Node cur) {
 
             // 为啥这里要一个stack，是为了更好的扁平化管理
@@ -121,4 +135,10 @@ public class SN0547 {
             return cur;
         }
     }
+
+
+    public void test(){
+
+    }
+
 }
