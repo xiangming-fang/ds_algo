@@ -5,7 +5,7 @@ package indi.xm.jy.competition.oddweekcompetition.th91;
  * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th001
  * @ClassName: SN0001
  * @Author: albert.fang
- * @Description:
+ * @Description: 根据限制分割消息
  * @Date: 2022/10/21 16:26
  */
 public class SN0004 {

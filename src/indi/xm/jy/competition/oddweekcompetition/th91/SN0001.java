@@ -9,7 +9,7 @@ import java.util.function.DoubleConsumer;
  * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th001
  * @ClassName: SN0001
  * @Author: albert.fang
- * @Description:
+ * @Description: 不同的平均值数目
  * @Date: 2022/10/21 16:26
  */
 public class SN0001 {
