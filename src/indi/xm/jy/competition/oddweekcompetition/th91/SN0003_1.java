@@ -1,6 +1,5 @@
 package indi.xm.jy.competition.oddweekcompetition.th91;
 
-import indi.xm.jy.leetcode.util.StringUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -13,7 +12,7 @@ import java.util.*;
  * @Description: 树上最大得分和路径
  * @Date: 2022/10/21 16:26
  */
-public class SN0003 {
+public class SN0003_1 {
 
     // 思路：构造图 + dfs遍历
     // 1、根据给的edges构造出图
@@ -23,8 +22,8 @@ public class SN0003 {
 
     public Map<Integer,Integer> bobStep = new HashMap<>();
 
-    // alice 经过的节点
-    public Set<Integer> aliceStep = new HashSet<>();
+    // alice 经过的节点，经过的节点值，改成对应的true
+    boolean[] exists = new boolean[100010];
 
     // 下标：对应节点
     // value: 与这个节点相邻的节点
@@ -33,7 +32,6 @@ public class SN0003 {
     public int ans = Integer.MIN_VALUE;
 
     public int[] amount;
-
 
     public int mostProfitablePath(int[][] edges, int bob, int[] amount) {
 
@@ -59,7 +57,7 @@ public class SN0003 {
     }
 
     private void aliceDfs(int u,int step,int sum) {
-        aliceStep.add(u);
+        exists[u] = true;
         if (u != 0 && graph[u].size() == 1) {
             ans = Math.max(ans,sum);
             return;
@@ -67,9 +65,12 @@ public class SN0003 {
 
         for (int next : graph[u]) {
             int tmp = amount[next];
-            if (aliceStep.contains(next)) continue;
+            if (exists[next]) continue;
+            // 如果bobStep经过这个节点，并且经过这个节点的步数小于 step + 1说明bob先到这个节点，所以alice这步操作应该等于0
             if (bobStep.containsKey(next) && bobStep.get(next) < step + 1) tmp = 0;
+            // 如果包含，并且 想等，那么 alice这步操作应该等于 这个节点的 1/2 值
             else if (bobStep.containsKey(next) && bobStep.get(next) == step + 1) tmp = tmp >> 1;
+            // 不包含，alice自己得到全部的值
             aliceDfs(next,step + 1,sum + tmp);
         }
     }
@@ -91,15 +92,15 @@ public class SN0003 {
 
     @Test
     public void test(){
-//        int[][] edges = {{0,1},{1,2},{1,3},{3,4}};
-//        int bob = 3;
-//        int[] amount = {-2,4,2,-4,6};
-//        System.out.println(mostProfitablePath(edges, bob, amount));
-
-        int[][] edges = {{0,1}};
-        int bob = 1;
-        int[] amount = {-7280,2350};
+        int[][] edges = {{0,1},{1,2},{1,3},{3,4}};
+        int bob = 3;
+        int[] amount = {-2,4,2,-4,6};
         System.out.println(mostProfitablePath(edges, bob, amount));
+
+//        int[][] edges = {{0,1}};
+//        int bob = 1;
+//        int[] amount = {-7280,2350};
+//        System.out.println(mostProfitablePath(edges, bob, amount));
     }
 
 
