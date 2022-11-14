@@ -5,7 +5,7 @@ package indi.xm.jy.competition.weekcompetition.th319;
  * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th001
  * @ClassName: SN0001
  * @Author: albert.fang
- * @Description:
+ * @Description: 温度转换
  * @Date: 2022/10/21 16:26
  */
 public class SN0001 {

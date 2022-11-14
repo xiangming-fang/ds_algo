@@ -7,7 +7,7 @@ import org.junit.Test;
  * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th001
  * @ClassName: SN0001
  * @Author: albert.fang
- * @Description:
+ * @Description: 最小公倍数为 K 的子数组数目
  * @Date: 2022/10/21 16:26
  */
 public class SN0002 {

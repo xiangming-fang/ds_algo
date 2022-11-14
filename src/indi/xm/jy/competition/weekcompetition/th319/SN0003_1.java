@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th001
  * @ClassName: SN0001
  * @Author: albert.fang
- * @Description:
+ * @Description: 逐层排序二叉树所需的最少操作数目
  * @Date: 2022/10/21 16:26
  */
 public class SN0003_1 {
@@ -60,7 +60,7 @@ public class SN0003_1 {
             if (Objects.equals(level.get(i), sorted.get(i))) continue;
             int minI = map.get(sorted.get(i));
             // 注意！！！
-            // 在交换前，必须先修改level当前元素，以及当前应该的最小元素即sorted.get(i) 在map中的下标
+            // 因为map存储的是level各个元素所对应的下标，所以在交换前，必须先修改level当前元素，以及当前应该的最小元素即sorted.get(i) 在map中的下标
             map.put(level.get(i),minI);
             map.put(sorted.get(i),i);
             Collections.swap(level,i,minI);
