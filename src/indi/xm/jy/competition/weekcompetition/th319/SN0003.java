@@ -15,6 +15,10 @@ import java.util.*;
 public class SN0003 {
 
     // tle
+    // 思路：选择排序 + 层序遍历
+    // 选择排序思想：
+    // 1、对[0,n] 的范围的数进行排序，确认第一位的时候，则取[0,n]最小值，找到最小值下index标，与第一位位置进行交换。
+    // 2、依次类推，确定第i位元素的具体指，是取[i-1,n]范围的最小值下标index，然后交换index和i位置的元素
     public int minimumOperations(TreeNode root) {
         int ans = 0;
         LinkedList<TreeNode> queue = new LinkedList<>();
