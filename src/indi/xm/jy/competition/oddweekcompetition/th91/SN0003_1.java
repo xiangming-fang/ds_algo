@@ -75,6 +75,7 @@ public class SN0003_1 {
         }
     }
 
+    // 用true控制是往根节点走的路径
     private boolean bobDfs(int u,int step) {
 
         bobStep.put(u,step);

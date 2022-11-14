@@ -9,4 +9,11 @@ package indi.xm.jy.competition.oddweekcompetition.th91;
  * @Date: 2022/10/21 16:26
  */
 public class SN0004 {
+
+    public String[] splitMessage(String message, int limit) {
+
+
+
+        return new String[0];
+    }
 }
