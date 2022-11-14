@@ -12,6 +12,14 @@ import org.junit.Test;
  */
 public class SN0002 {
 
+    // 思路：双指针
+    // 提示：最小公倍数算法 lcm = a * b / gcd(a,b) 其中gcd表示最大公约数
+    // 1、以每个位置为子数组的开头位置记为指针i
+    // 2、如果当前位置i都大于最大公约数 k了，那肯定是跳过当前位置，进行下次迭代
+    // 3、在子数组中，以i位置为结尾的，记为指针j，同时记初始最最小公倍数为lcm = 1（因为任何数和1的最小公倍数都是其本身）
+    // 4、求当前j位置和lcm的最小公倍数是多少，如果等于k，那么返回的答案+1
+    // 5、如果小于k，那么j指针后移
+    // 6、如果大于k，同样的，break掉以i为子数组开始的内嵌循环。
     public int subarrayLCM(int[] nums, int k) {
         int ans = 0,lcm;
         for (int i = 0; i < nums.length; i++) {
