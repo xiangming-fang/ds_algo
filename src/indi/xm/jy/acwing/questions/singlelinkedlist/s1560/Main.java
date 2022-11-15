@@ -59,24 +59,22 @@ public class Main {
             for (int j = 0; j <= mid; j++) {
                 Collections.swap(linkedList,i + j,i + K - 1 - j);
             }
-            for (int j = lastEnd; j < lastEnd + K; j++) {
+            for (int j = lastEnd; j < lastEnd + K - 1; j++) {
                 linkedList.get(j).next = linkedList.get(j+1).address;
+                System.out.println(linkedList.get(j).address + " " + linkedList.get(j).data + " " + linkedList.get(j).next);
             }
-            lastEnd = i;
+            lastEnd += K - 1;
             i = i + K;
         }
 
         for (int j = lastEnd; j < linkedList.size() ; j++) {
             if (j == linkedList.size() - 1) {
                 linkedList.get(j).next = "-1";
+                System.out.println(linkedList.get(j).address + " " + linkedList.get(j).data + " " + linkedList.get(j).next);
                 break;
             }
             linkedList.get(j).next = linkedList.get(j+1).address;
-        }
-
-        // 输出
-        for (Struct struct : linkedList) {
-            System.out.println(struct.address + " " + struct.data + " " + struct.next);
+            System.out.println(linkedList.get(j).address + " " + linkedList.get(j).data + " " + linkedList.get(j).next);
         }
     }
 
