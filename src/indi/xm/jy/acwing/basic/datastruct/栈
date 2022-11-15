@@ -1,0 +1,25 @@
+// 栈：先进后出，一个指针即可维护，tt -> 表示栈顶，所指位置就是栈顶元素
+
+模板：
+
+int N = 100010;
+
+int[] arr = new int[N];
+int tt = 0;
+
+public boolean isEmpty(){
+    return tt == 0;
+}
+
+public void push(int x){
+    arr[++tt] = x;
+}
+
+public void pop(){
+    tt--;
+}
+
+public int query(){
+    return arr[tt];
+}
+

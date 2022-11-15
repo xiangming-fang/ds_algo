@@ -72,10 +72,16 @@ public class Main {
 
         }
 
-        // 遍历
+        // 从前往后遍历
         for (int i = r[0]; i != 1; i = r[i]) {
             System.out.print(e[i] + " ");
         }
 
+        System.out.println();
+
+        // 从 后往前遍历
+        for (int i = l[1];  i != 0; i = l[i]){
+            System.out.print(e[i] + " ");
+        }
     }
 }
