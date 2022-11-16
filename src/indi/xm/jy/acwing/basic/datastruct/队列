@@ -1,0 +1,31 @@
+队列：先进先出，tt -> 队尾，hh -> 队首
+队尾进队，队尾出队。
+
+数组模拟普通队列模板：
+
+int N = 100010;
+int tt = -1;
+int hh = 0;
+int[] queue = new int[N];
+
+public void push(int x) {
+    queue[++tt] = x;
+}
+
+public void pop() {
+    hh ++;
+}
+
+public int query(){
+    return queue[hh];
+}
+
+public boolean isEmpty(){
+    return hh > tt;
+}
+
+
+
+
+
+
