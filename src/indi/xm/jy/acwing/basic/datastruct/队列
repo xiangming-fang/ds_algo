@@ -1,5 +1,7 @@
-队列：先进先出，tt -> 队尾，hh -> 队首
-队尾进队，队尾出队。
+队列：先进先出，队尾进队，队首出队。
+
+普通队列：
+tt -> 队尾，hh -> 队首
 
 数组模拟普通队列模板：
 
@@ -23,6 +25,50 @@ public int query(){
 public boolean isEmpty(){
     return hh > tt;
 }
+
+
+循环队列：先进先出，队尾进队，队首出队。
+tt：队尾的后一个位置
+hh: 队首
+
+循环队列的意义：尽可能的避免数组空间浪费
+
+循环队列模板：
+
+int N = 10010;
+
+int[] queue = new int[N];
+
+int hh = 0;
+int tt = 0;
+int size = 0;
+
+public void push(int x){
+    queue[tt++] = x;
+    if(tt==N) tt = 0;
+    size ++;
+}
+
+public void pop(){
+    hh ++;
+    if(hh == N) hh = 0;
+    size --;
+}
+
+public int query(){
+    return queue[hh];
+}
+
+// 这是重点，也是难点 简单的判断 hh == tt那么为空和满都是这种情况
+// 索引我们这里可以维护一个遍历size 表示队列已经放了几个元素了，用size分别和0，以及N做比较即可得到为空和已满的情况
+public boolean isEmpty(){
+    return size = 0;
+}
+
+public boolean isFull(){
+    return size = N;
+}
+
 
 
 
