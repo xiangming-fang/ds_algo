@@ -62,11 +62,11 @@ public int query(){
 // 这是重点，也是难点 简单的判断 hh == tt那么为空和满都是这种情况
 // 索引我们这里可以维护一个遍历size 表示队列已经放了几个元素了，用size分别和0，以及N做比较即可得到为空和已满的情况
 public boolean isEmpty(){
-    return size = 0;
+    return size == 0;
 }
 
 public boolean isFull(){
-    return size = N;
+    return size == N;
 }
 
 

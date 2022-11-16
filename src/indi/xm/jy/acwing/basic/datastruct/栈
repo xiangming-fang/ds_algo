@@ -4,7 +4,7 @@
 
 int N = 100010;
 
-int[] arr = new int[N];
+int[] stk = new int[N];
 int tt = 0;
 
 public boolean isEmpty(){
@@ -12,7 +12,7 @@ public boolean isEmpty(){
 }
 
 public void push(int x){
-    arr[++tt] = x;
+    stk[++tt] = x;
 }
 
 public void pop(){
@@ -20,6 +20,6 @@ public void pop(){
 }
 
 public int query(){
-    return arr[tt];
+    return stk[tt];
 }
 
