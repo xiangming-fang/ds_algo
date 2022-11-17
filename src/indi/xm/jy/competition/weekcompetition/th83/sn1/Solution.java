@@ -1,4 +1,5 @@
-package indi.xm.jy.competition.weekcompetition.th83;
+package indi.xm.jy.competition.weekcompetition.th83.sn1;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,14 +7,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @ProjectName: leetcode
- * @Package: indi.xm.jy.leetcode.competition.weekcompetition.th001
- * @ClassName: SN0001
- * @Author: albert.fang
- * @Description: 较大分组的位置
- * @Date: 2022/10/21 16:26
+ * t1
  */
-public class SN0001 {
+public class Solution {
 
     public List<List<Integer>> largeGroupPositions(String s) {
         ArrayList<List<Integer>> ans = new ArrayList<>();
