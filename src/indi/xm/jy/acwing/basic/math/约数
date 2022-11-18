@@ -1,0 +1,20 @@
+
+试除法求出所有约数
+
+public List<Integer> getDivisors(int x){
+    List<Integer> ans = new ArrayList<>();
+    for(int i = 1; i <= x/i; i++){
+        if(x % i == 0) {
+            ans.add(i);
+            if(x / i != i) ans.add(x/i);
+        }
+    }
+    Collections.sort(ans);
+    return ans;
+}
+
+
+
+
+
+
