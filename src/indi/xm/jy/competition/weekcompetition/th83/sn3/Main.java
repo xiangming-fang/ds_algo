@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * t3
  */
-public class Solution {
+public class Main {
 
     // 双指针 tle 了
     public int consecutiveNumbersSum(int n) {

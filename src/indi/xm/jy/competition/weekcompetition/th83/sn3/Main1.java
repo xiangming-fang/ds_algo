@@ -10,7 +10,7 @@ import org.junit.Test;
  * @Description: t3
  * @Date: 2022/11/17 20:49
  */
-public class Solution1 {
+public class Main1 {
 
     // 思路：数论
     // 1: 假设 是以 a 为首项，并且长度为k的一连续数列和为n
