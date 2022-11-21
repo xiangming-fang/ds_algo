@@ -32,8 +32,6 @@ public class Solution {
         }
         this.seats = seats;
 
-        System.out.println(dfs(0, -1));
-
         return ans;
     }
 

@@ -5,3 +5,7 @@ https://leetcode.cn/problems/paths-in-matrix-whose-sum-is-divisible-by-k/
 318-4：最小移动总距离
 https://leetcode.cn/problems/minimum-total-distance-traveled/description/
 知识点：记忆化、dp
+
+320-4: 完美分割的方案数
+https://leetcode.cn/problems/number-of-beautiful-partitions/description/
+知识点：记忆化、dp
