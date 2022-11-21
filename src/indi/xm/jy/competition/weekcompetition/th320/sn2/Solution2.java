@@ -1,10 +1,8 @@
 package indi.xm.jy.competition.weekcompetition.th320.sn2;
 
 import indi.xm.jy.leetcode.data_structure.TreeNode;
-import javafx.util.Pair;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,40 +12,45 @@ import java.util.stream.Stream;
  */
 public class Solution2 {
 
-    public int max = -1,min = -1;
-
+    // 思路：bst的中序遍历 + 二分
+    // 1、将bst直接中序遍历，输出结果用nums数组接住。
+    // 2、因为nums数组是有序的，所以我们就可以用二分的方法从中找到对应值
     public List<List<Integer>> closestNodes(TreeNode root, List<Integer> queries) {
+        List<Integer> nums = new ArrayList<>();
+        midOrder(root,nums);
         List<List<Integer>> res = new ArrayList<>();
-        HashMap<Integer, Pair<Integer, Integer>> map = new HashMap<>();
         for (int query : queries) {
-            if (map.containsKey(query)) {
-                min = map.get(query).getKey();
-                max = map.get(query).getValue();
-                res.add(Stream.of(min, max).collect(Collectors.toList()));
-            } else {
-                max = -1;
-                min = -1;
-                dfs(root,query);
-                map.put(query, new Pair<>(min, max));
-                res.add(Stream.of(min, max).collect(Collectors.toList()));
+            int min = -1,max = -1;
+            int l = 0,r = nums.size() - 1;
+            // 第一个二分查找小于等于query的最大值
+            while (l<r){
+                int mid = l + ( r - l + 1)/2;
+                // 如果二分的中点小于等于待查找值query，说明待查找元素在右边，所以右移左边界
+                if (query >= nums.get(mid)) l = mid;
+                else r = mid - 1;
             }
+            if (nums.get(l) <= query) min = nums.get(l);
+            // 第二个二分查找大于等于query的最小值
+            l = 0;r = nums.size() - 1;
+            while (l < r){
+                int mid = l + (r - l)/2;
+                // 如果二分的中点大于等于query，说明待查找元素在左边，左移右边界
+                if (query <= nums.get(mid)) r = mid;
+                else l = mid + 1;
+            }
+            if (nums.get(l) >= query) max = nums.get(l);
+            res.add(Stream.of(min,max).collect(Collectors.toList()));
         }
         return res;
     }
 
-    public void dfs(TreeNode node,int target){
+    public void midOrder(TreeNode node,List<Integer> ans){
         if (node == null) return;
-        if (node.val  == target){
-            min  = node.val;
-            max = node.val;
-            return;
-        }
-        if (node.val < target) {
-            min = node.val;
-            dfs(node.right,target);
-        }
-        max = node.val;
-        dfs(node.left,target);
+        midOrder(node.left,ans);
+        ans.add(node.val);
+        midOrder(node.right,ans);
     }
+
+
 
 }

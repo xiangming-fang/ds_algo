@@ -14,6 +14,8 @@ import java.util.stream.Stream;
  */
 public class Solution {
 
+    // 思路：层序遍历 + 排序
+    // 结果tle，忽略了bst的中序遍历特性
     public List<List<Integer>> closestNodes(TreeNode root, List<Integer> queries) {
         LinkedList<TreeNode> queue = new LinkedList<>();
         List<Integer> nums = new ArrayList<>();
