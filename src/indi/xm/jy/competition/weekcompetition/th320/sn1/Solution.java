@@ -6,7 +6,7 @@ package indi.xm.jy.competition.weekcompetition.th320.sn1;
  */
 public class Solution {
 
-
+    // 思路：暴力模拟
     public int unequalTriplets(int[] nums) {
         int ans = 0;
         for (int i = 0; i < nums.length; i++) {
