@@ -51,6 +51,10 @@ public class Solution2 {
         midOrder(node.right,ans);
     }
 
+    public static void main(String[] args) {
+        System.out.println(-1111%3);
+    }
+
 
 
 }

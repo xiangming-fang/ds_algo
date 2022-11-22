@@ -26,7 +26,13 @@ void init()
 // 在链表头插入一个数a
 void insert(int a)
 {
-    e[idx] = a, ne[idx] = head, head = idx ++ ;
+    // 1、将当前可用位置元素值置位待插入元素a
+    e[idx] = a;
+    // 2、当前位置的下一个节点是之前的头结点
+    ne[idx] = head;
+    // 3、修改当前头结点为刚刚插入的位置
+    // 4、可用位置idx后移
+    head = idx ++ ;
 }
 
 // 将头结点删除，需要保证头结点存在
