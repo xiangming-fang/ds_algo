@@ -1,5 +1,5 @@
 
-（1）构建哈希表，哈希冲突的拉链法
+（1）构建哈希表，哈希冲突的拉链法：每个hash位置存储的是一个链表
 
 // 模的这个数，尽量取质数，以便减少hash冲突
 // 为什么取100003？
@@ -38,5 +38,33 @@ public boolean find(int x){
     }
     return false;
 }
+
+（2）构建hash表和开放寻址法：产生冲突就不停往后找可以存储元素的位置
+
+int N = 100003;
+// 存储的就是具体元素值，初始成一个不在x范围内的数，x ~ (-1e9 - 1e9),我们可以考虑初始成Integer.MaxValue
+int[] h = new int[N];
+
+public int hash(int x){
+    return ( x % N + N ) % N;
+}
+
+// 返回存储x的下标位置，或者下一个应该存储x的位置
+public int find(int x){
+    int k = hash(x);
+    while(h[k] != Integer.MAX_VALUE && h[k] != x){
+        k ++;
+        // 一直寻址到末尾都没地方存，将k置为0，从头开始找
+        if(k == N) k = 0;
+    }
+    return k;
+}
+
+public void add(int x){
+   int k = find(x);
+   if(h[k] == x) return;
+   h[k] = x;
+}
+
 
 
