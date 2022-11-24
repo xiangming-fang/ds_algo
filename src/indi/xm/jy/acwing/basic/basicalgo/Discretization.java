@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * 离散化：
+ * 离散化：是需要保续的hash方式
  * 将无限空间的有限数据 映射到 有限空间中，提高算法的时间、空间复杂度。
  * 离散化只关心数据之间的相对大小关系，而并不关心具体的数值
  */
