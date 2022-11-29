@@ -1,7 +1,13 @@
 package indi.xm.jy.competition.oddweekcompetition.th92.sn2;
 
 /**
- * t2
+ * t2 行和列中一和零的差值
+ * 算法原型：模拟
+ * 思路：
+ * 1、用四个数组：rowOneNum,colOneNum,rowZeroNum,colZeroNum;
+ * 分别存储当前行1的个数、当前列1的个数、当前行0的个数、当前列0的个数
+ * 2、遍历元素组的每个位置，组成目标数组
+ *
  */
 public class Solution {
 

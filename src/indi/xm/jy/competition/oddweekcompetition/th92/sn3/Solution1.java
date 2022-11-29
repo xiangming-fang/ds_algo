@@ -3,12 +3,12 @@ package indi.xm.jy.competition.oddweekcompetition.th92.sn3;
 import org.junit.Test;
 
 /**
- * @ProjectName: leetcode
- * @Package: indi.xm.jy.competition.oddweekcompetition.th92.sn3
- * @ClassName: Solution1
- * @Author: albert.fang
- * @Description:
- * @Date: 2022/11/26 23:31
+ * t3 商店的最少代价
+ * 算法原型：前缀和、后缀和
+ * 思路：
+ * 1、没关店前，统计N出现的个数，构造前缀数组
+ * 2、关店后，统计Y出现的个数，构造后缀数组
+ * 3、遍历每个位置，得到最小代价关店时机
  */
 public class Solution1 {
 
