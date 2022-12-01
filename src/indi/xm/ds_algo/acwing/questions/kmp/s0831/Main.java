@@ -1,8 +1,6 @@
 package indi.xm.ds_algo.acwing.questions.kmp.s0831;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * @Author: albert.fang
@@ -13,24 +11,27 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int n = Integer.parseInt(br.readLine());
         String p = " " + br.readLine();
         int m = Integer.parseInt(br.readLine());
         String s = " " + br.readLine();
         int[] next = new int[n + 1];
+        char[] pc = p.toCharArray();
+        char[] sc = s.toCharArray();
         for(int i = 2,j = 0;i <= n;i ++){
-            while (j != 0 && p.charAt(i) != p.charAt(j + 1)) j = next[j];
-            if (p.charAt(i) == p.charAt(j+1)) j++;
+            while (j != 0 && pc[i] != pc[j+1]) j = next[j];
+            if (pc[i] == pc[j+1]) j++;
             next[i] = j;
         }
         for (int i = 1,j = 0; i <= m; i++){
-            while (j != 0 && s.charAt(i) != p.charAt(j + 1)) j = next[j];
-            if (s.charAt(i) == p.charAt(j+1)) j++;
+            while (j != 0 && sc[i] != pc[j+1]) j = next[j];
+            if (sc[i] == pc[j+1]) j++;
             if (j == n){
                 j = next[j];
-                System.out.print(i-n + " ");
+                bw.write(i - n + " ");
             }
         }
-
+        bw.flush();
     }
 }
