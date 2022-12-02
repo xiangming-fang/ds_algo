@@ -13,29 +13,22 @@ public class Solution {
         int[] suffix = new int[n];
         int[] ans = new int[n];
         int cnt = 0;
+        int lcnt = 0;
         for (int i = 0; i < n; i++) {
             if (i == 0) {
                 if (boxes.charAt(i) == '1') cnt++;
+                if (boxes.charAt(n - 1 - i) == '1') lcnt++;
             }
             else {
                 pre[i] = pre[i-1] + cnt;
+                suffix[n - 1 - i] = suffix[n - i] + lcnt;
                 if (boxes.charAt(i) == '1') cnt++;
-            }
-        }
-        cnt = 0;
-        for (int i = n - 1; i >= 0; i--) {
-            if (i == n - 1){
-                if (boxes.charAt(i) == '1') cnt ++;
-            }
-            else {
-                suffix[i] = suffix[i+1] + cnt;
-                if (boxes.charAt(i) == '1') cnt++;
+                if (boxes.charAt(n - 1 - i) == '1') lcnt ++;
             }
         }
         for (int i = 0; i < n; i++) {
             ans[i] = pre[i] + suffix[i];
         }
-
         return ans;
     }
 
