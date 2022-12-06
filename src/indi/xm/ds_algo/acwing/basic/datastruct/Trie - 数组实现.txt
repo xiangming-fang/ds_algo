@@ -1,0 +1,32 @@
+
+数组实现 Trie模板：
+
+    // 最长字符串范围
+    int N = (int)1e5 + 10;
+    // 一维：表示字符串位置
+    // 二维：表示字符串范围
+    int[][] son = new int[N][26];
+    // 统计字符串个数
+    int[] cnt = new int[N];
+    // 当前可用位置
+    int idx;
+
+    public void add(String s){
+        int cur = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int num = s.charAt(i) - 'a';
+            if (son[cur][num] == 0) son[cur][num] = ++idx;
+            cur = son[cur][num];
+        }
+        cnt[cur] ++;
+    }
+
+    public int getCount(String s){
+        int cur = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int num = s.charAt(i) - 'a';
+            if (son[cur][num] == 0) return 0;
+            cur = son[cur][num];
+        }
+        return cnt[cur];
+    }
