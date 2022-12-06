@@ -1,0 +1,30 @@
+
+并查集结构体实现模板：
+
+     class UF{
+        int N = (int)1e5 + 10;
+        // 下标表示数
+        // 数组具体值表示集合id
+        int[] set = new int[N];
+
+        public UF(){
+            for (int i = 0; i < N; i++) {
+                set[i] = i;
+            }
+        }
+
+        // 表示将数a和b放在一个集合中
+        // 将a数集合id改成b数集合id
+        public void union(int a,int b){
+            int setAId = set[a];
+            int setBId = set[b];
+            for (int i = 0; i < N; i++) {
+                if (set[i] == setAId) set[i] = setBId;
+            }
+        }
+
+        // 两个数是否在同一个集合中
+        public boolean isConnected(int a,int b){
+            return set[a] == set[b];
+        }
+    }
