@@ -14,7 +14,7 @@ while(p[x] != x) x = p[x]
 问题3：如何合并a,b两个元素所处的两个集合？
 p[find(a)] = find(b)
 
-*** 朴素并查集实现模板：
+*** （1）朴素并查集实现模板
 
 int N = (int)1e5 + 10;
 int[] p = new int[N];
@@ -42,3 +42,44 @@ public void init(){
         p[i] = i;
     }
 }
+
+*** （2）维护集合size的并查集模板
+
+int N = (int)1e5 + 10;
+
+int[] p = new int[N];
+int[] size = new int[N];
+
+
+public void init(){
+    for (int i = 0; i < p.length; i++) {
+        p[i] = i;
+        size[i] = 1;
+    }
+}
+
+public int find(int x){
+    while (x != p[x]) x = p[x];
+    return p[x];
+}
+
+public void union(int a,int b){
+    int aRoot = find(a);
+    int bRoot = find(b);
+    // 已经处于同一个集合，必须再操作
+    if (aRoot == bRoot) return;
+    size[bRoot] += size[aRoot];
+    p[aRoot] = bRoot;
+}
+
+public boolean isConnected(int a,int b){
+    return find(a) == find(b);
+}
+
+public int count(int a){
+    return size[find(a)];
+}
+
+*** （3）路径压缩并查集模板 —— 将祖宗变成爹
+
+

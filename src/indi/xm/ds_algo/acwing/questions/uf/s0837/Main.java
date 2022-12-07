@@ -15,13 +15,13 @@ public class Main {
     int N = (int)1e5 + 10;
 
     int[] p = new int[N];
+    int[] size = new int[N];
 
-    HashMap<Integer,Integer> cntMap = new HashMap<>();
 
     public void init(){
         for (int i = 0; i < p.length; i++) {
             p[i] = i;
-            cntMap.put(i,1);
+            size[i] = 1;
         }
     }
 
@@ -33,10 +33,9 @@ public class Main {
     public void union(int a,int b){
         int aRoot = find(a);
         int bRoot = find(b);
-        // a,b所处同一个集合，不必进行后续操作
+        // 已经处于同一个集合，必须再操作
         if (aRoot == bRoot) return;
-        cntMap.put(bRoot,cntMap.get(aRoot) + cntMap.get(bRoot));
-        cntMap.remove(aRoot);
+        size[bRoot] += size[aRoot];
         p[aRoot] = bRoot;
     }
 
@@ -45,7 +44,7 @@ public class Main {
     }
 
     public int count(int a){
-        return cntMap.get(find(a));
+        return size[find(a)];
     }
 
     public static void main(String[] args) throws IOException {
