@@ -3,6 +3,9 @@ package indi.xm.ds_algo.acwing.questions.uf.s0836;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @Author: albert.fang
@@ -11,31 +14,31 @@ import java.io.InputStreamReader;
  */
 public class Main {
 
-    static class UF{
-        int N = (int)1e5 + 10;
-        // 下标表示数
-        // 数组具体值表示集合id
-        int[] set = new int[N];
+    int N = (int)1e5 + 10;
+    int[] p = new int[N];
 
-        public UF(){
-            for (int i = 0; i < N; i++) {
-                set[i] = i;
-            }
-        }
+    // 找到a所处的集合编号
+    public int find(int a){
+        // 不是根节点的话，一直往上找
+        while(a != p[a]) a = p[a];
+        return p[a];
+    }
 
-        // 表示将数a和b放在一个集合中
-        // 将a数集合id改成b数集合id
-        public void union(int a,int b){
-            int setAId = set[a];
-            int setBId = set[b];
-            for (int i = 0; i < N; i++) {
-                if (set[i] == setAId) set[i] = setBId;
-            }
-        }
+    // 合并a，b两个元素所处的集合
+    public void union(int a,int b){
+        int aRoot = find(a);
+        int bRoot = find(b);
+        if(aRoot != bRoot) p[aRoot] = bRoot;
+    }
 
-        // 两个数是否在同一个集合中
-        public boolean isConnected(int a,int b){
-            return set[a] == set[b];
+    // 看元素a和b是否在同一个集合中
+    public boolean isConnected(int a,int b){
+        return find(a) == find(b);
+    }
+
+    public void init(){
+        for (int i = 0; i < p.length; i++) {
+            p[i] = i;
         }
     }
 
@@ -44,15 +47,16 @@ public class Main {
         String[] f = br.readLine().split(" ");
         int n = Integer.parseInt(f[0]);
         int m = Integer.parseInt(f[1]);
-        UF uf = new UF();
+        Main main = new Main();
+        main.init();
         while (m-- > 0){
             String[] s = br.readLine().split(" ");
             int a = Integer.parseInt(s[1]);
             int b = Integer.parseInt(s[2]);
             if ("M".equals(s[0])){
-                uf.union(a,b);
+                main.union(a,b);
             }else {
-                if (uf.isConnected(a,b)) System.out.println("Yes");
+                if (main.isConnected(a,b)) System.out.println("Yes");
                 else System.out.println("No");
             }
         }

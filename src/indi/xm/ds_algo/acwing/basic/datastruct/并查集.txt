@@ -1,0 +1,44 @@
+
+并查集功能：
+1. 将两个集合合并
+2. 询问两个元素是否在一个集合当中
+
+基本原理：每个集合用一棵树来表示。树根的编号就是整个集合的编号。每个节点存储它的父节点，p[x]表示x的父节点。
+
+问题1：如何判断树根？
+p[x] == x
+
+问题2：如何求x的集合编号？
+while(p[x] != x) x = p[x]
+
+问题3：如何合并a,b两个元素所处的两个集合？
+p[find(a)] = find(b)
+
+*** 朴素并查集实现模板：
+
+int N = (int)1e5 + 10;
+int[] p = new int[N];
+
+// 找到a所处的集合编号
+public int find(int a){
+    // 不是根节点的话，一直往上找
+    while(a != p[a]) a = p[a];
+    return p[a];
+}
+
+// 合并a，b两个元素所处的集合
+public void union(int a,int b){
+    p[find(a)] = find(b);
+}
+
+// 看元素a和b是否在同一个集合中
+public boolean isConnected(int a,int b){
+    return find(a) == find(b);
+}
+
+// 并查集初始化，每个元素都处于一个集合中，集合编号就是元素值
+public void init(){
+    for (int i = 0; i < p.length; i++) {
+        p[i] = i;
+    }
+}
