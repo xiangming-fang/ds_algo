@@ -1,9 +1,9 @@
-package indi.xm.ds_algo.leetcode.sn.SN0400;
+package indi.xm.ds_algo.leetcode.sn.SN0400.sn0231;
 
 import org.junit.Test;
 
 // 2的幂
-public class SN0231 {
+public class Solution {
     public boolean isPowerOfTwo01(int n) {
         if (n == 0){
             return false;
