@@ -23,8 +23,8 @@ public void down(int u){
 
 public void up(int u){
     int t = u;
-    // 当前比上级小才up
-    if(nums[t/2] > nums[t]) t = t/2;
+    // 当前比上级小才up && 上级坐标要大于0，因为堆是从下标为1开始存储的
+    if(t/2 > 0 && nums[t/2] > nums[t]) t = t/2;
     if(t != u){
         int tmp = nums[u];
         nums[u] = nums[t];
