@@ -18,6 +18,7 @@ public class BigInt {
     // 总结
     // 1、高精度 +-*/ 只有加法没有前置0，不需要去除
     // 2、加和乘很相像 tmp = tmp/10;ans.add(tmp%10);
+    // 3、tmp 初始值都为 0
 
     // 高精度a + 高精度b
     public ArrayList<Integer> add(ArrayList<Integer> a,ArrayList<Integer> b){

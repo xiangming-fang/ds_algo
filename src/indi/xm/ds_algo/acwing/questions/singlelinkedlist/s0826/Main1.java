@@ -18,9 +18,9 @@ public class Main1 {
     public static Node head = new Node(-1,null,0);
 
     static class Node{
-        private int value;
-        private Node next;
-        private int opNum;
+        public int value;
+        public Node next;
+        public int opNum;
 
         public Node(){
 
