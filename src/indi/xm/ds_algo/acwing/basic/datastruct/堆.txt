@@ -1,0 +1,49 @@
+堆：底层存储结构是数组，用下标可以构成一棵抽象的树结构。
+我们用数组从下标为1的开始存储,通常下标为i的左右孩子的下标分别为：2*i、2*i+1
+
+堆的两个重要操作：down、up
+几乎堆的所有操作我们都可以用这两个操作进行组合。
+
+int[] nums = new int[N];
+
+// 堆中元素的个数
+int size = 0;
+
+public void down(int u){
+    int t = u;
+    if( 2 * u <= size && nums[2*u] < nums[t]) t = 2 * u;
+    if( 2 * u + 1 <= size && nums[2*u + 1] < nums[t]) t = 2 * u + 1;
+    if(t != u){
+        int tmp = nums[u];
+        nums[u] = nums[t];
+        nums[t] = tmp;
+        down(t);
+    }
+}
+
+public void up(int u){
+    int t = u;
+    // 当前比上级小才up
+    if(nums[t/2] > nums[t]) t = t/2;
+    if(t != u){
+        int tmp = nums[u];
+        nums[u] = nums[t];
+        nums[t] = tmp;
+        up(t);
+    }
+}
+
+// 堆化，快速将一个数组变成堆结构，时间复杂度O(n)
+public void heapify(){
+    for(int i = size/2 - 1;i>0;i--) down(i);
+}
+
+其他操作：
+（1）往堆中插入一个数 => nums[++size] = num; up(size);
+（2）求集合中的最小值 => nums[1]
+（3）删除最小值 => nums[1] = nums[size--];down(1);
+（4）删除任意一个位置(k)的元素 => nums[k] = nums[size--];down(k);up(k);
+（5）修改任意一个位置(k)的元素为x => nums[k] = x;down(k);up(k);
+
+
+
