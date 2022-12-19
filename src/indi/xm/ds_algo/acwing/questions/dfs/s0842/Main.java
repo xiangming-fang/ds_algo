@@ -19,9 +19,9 @@ public class Main {
         s = n;
         flag = new boolean[n+1];
         sb = new StringBuilder();
-        dfs(1);
+        dfs();
     }
-    public static void dfs(int n){
+    public static void dfs(){
         if (sb.length() == s){
             for (int i = 0; i < sb.toString().length(); i++) {
                 System.out.print(sb.charAt(i) + " ");
@@ -34,7 +34,7 @@ public class Main {
             }
             flag[i] = true;
             sb.append(i);
-            dfs(i + 1);
+            dfs();
             sb.deleteCharAt(sb.length() - 1);
             flag[i] = false;
         }
