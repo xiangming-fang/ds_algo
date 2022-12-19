@@ -16,8 +16,6 @@ public class Main {
 
     static int n;
 
-    static int m;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
@@ -25,11 +23,11 @@ public class Main {
         for (char[] chars : board) {
             Arrays.fill(chars,'.');
         }
-        dfs();
+        dfs(0);
     }
 
-    public static void dfs(){
-        if (m == n){
+    public static void dfs(int row){
+        if (row == n){
             for (char[] chars : board) {
                 for (char aChar : chars) {
                     System.out.print(aChar + " ");
@@ -39,15 +37,11 @@ public class Main {
             System.out.println();
             return;
         }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (legal(i,j)) {
-                    board[i][j] = 'Q';
-                    m++;
-                    dfs();
-                    m--;
-                    board[i][j] = '.';
-                }
+        for (int j = 0; j < n; j++) {
+            if (legal(row,j)) {
+                board[row][j] = 'Q';
+                dfs(row+1);
+                board[row][j] = '.';
             }
         }
     }
