@@ -30,7 +30,7 @@ public class Main {
         if (row == n){
             for (char[] chars : board) {
                 for (char aChar : chars) {
-                    System.out.print(aChar + " ");
+                    System.out.print(aChar);
                 }
                 System.out.println();
             }
