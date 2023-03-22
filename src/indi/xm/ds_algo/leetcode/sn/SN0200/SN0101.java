@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.sn.SN0200;
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 
 /**
  * @author: albert.fang
@@ -10,14 +10,14 @@ import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
  */
 public class SN0101 {
 
-    public boolean isSymmetric(indi.xm.ds_algo.leetcode.data_structure.TreeNode root) {
+    public boolean isSymmetric(indi.xm.data_structure.TreeNode root) {
         if (root == null){
             return true;
         }
         return isImage(root.left,root.right);
 
     }
-    public boolean isImage(indi.xm.ds_algo.leetcode.data_structure.TreeNode left, TreeNode right){
+    public boolean isImage(indi.xm.data_structure.TreeNode left, TreeNode right){
         if (left == null && right == null){
             return true;
         }

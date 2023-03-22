@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.sn.SN0200;
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 
 /**
  * @author: albert.fang
@@ -12,7 +12,7 @@ import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
  * 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
  */
 public class SN0100 {
-    public static boolean solution01(indi.xm.ds_algo.leetcode.data_structure.TreeNode p, TreeNode q) {
+    public static boolean solution01(indi.xm.data_structure.TreeNode p, TreeNode q) {
         if (p == null && q != null){
             return false;
         }

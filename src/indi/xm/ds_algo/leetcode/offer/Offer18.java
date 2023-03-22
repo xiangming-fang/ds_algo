@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.offer;
 
-import indi.xm.ds_algo.leetcode.data_structure.ListNode;
+import indi.xm.data_structure.ListNode;
 import indi.xm.ds_algo.leetcode.util.ListNodeUtil;
 
 import java.util.ArrayList;

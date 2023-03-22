@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.Interview;
 
-import indi.xm.ds_algo.leetcode.data_structure.ListNode;
+import indi.xm.data_structure.ListNode;
 
 import java.util.*;
 

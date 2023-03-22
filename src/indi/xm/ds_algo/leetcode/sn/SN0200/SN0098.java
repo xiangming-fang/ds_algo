@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.sn.SN0200;
 
-import indi.xm.ds_algo.leetcode.data_structure.array.Array;
+import indi.xm.data_structure.array.Array;
 
 /**
  * @ProjectName: leetcode

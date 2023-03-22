@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.sn.SN0200;
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * @description: 54. 二叉搜索树的第k大节点
  */
 public class SN0054 {
-    public int kthLargest(indi.xm.ds_algo.leetcode.data_structure.TreeNode root, int k) {
+    public int kthLargest(indi.xm.data_structure.TreeNode root, int k) {
         List<Integer> ret = new ArrayList<>();
         inOrder(root,ret);
         return ret.get(ret.size() - k + 1);

@@ -1,7 +1,7 @@
 package indi.xm.ds_algo.leetcode.sn.SN0400;
 
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 
 // 同236
 public class SN0235 {

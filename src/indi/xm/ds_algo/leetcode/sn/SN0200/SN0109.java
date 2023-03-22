@@ -1,7 +1,7 @@
 package indi.xm.ds_algo.leetcode.sn.SN0200;
 
-import indi.xm.ds_algo.leetcode.data_structure.ListNode;
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.ListNode;
+import indi.xm.data_structure.TreeNode;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class SN0109 {
     // BST是二叉搜索树
-    public indi.xm.ds_algo.leetcode.data_structure.TreeNode sortedListToBST(ListNode head) {
+    public indi.xm.data_structure.TreeNode sortedListToBST(ListNode head) {
         if (head == null){
             return null;
         }
@@ -33,22 +33,22 @@ public class SN0109 {
 
     // 分析思路，二叉搜索树的中序遍历就是按从小到大的顺序排列的
     // 又因为是高度平衡，每个节点的左右子树深度差不能超过1，所以将中点作为根节点，然后不断遍历左右子树（每个父亲节点都为相应区间的中心节点）
-    public indi.xm.ds_algo.leetcode.data_structure.TreeNode highBalance(int[] ints, int startIndex, int endIndex){
+    public indi.xm.data_structure.TreeNode highBalance(int[] ints, int startIndex, int endIndex){
         if (startIndex > endIndex){
             return null;
         }
         int mid = (startIndex + endIndex)/2;
-        indi.xm.ds_algo.leetcode.data_structure.TreeNode treeNode = new indi.xm.ds_algo.leetcode.data_structure.TreeNode(ints[mid]);
+        indi.xm.data_structure.TreeNode treeNode = new indi.xm.data_structure.TreeNode(ints[mid]);
         treeNode.left = highBalance(ints,startIndex,mid - 1);
         treeNode.right = highBalance(ints,mid + 1,endIndex);
         return treeNode;
     }
 
-    public indi.xm.ds_algo.leetcode.data_structure.TreeNode sortedListToBST2(ListNode head) {
+    public indi.xm.data_structure.TreeNode sortedListToBST2(ListNode head) {
         return getBalanceByLinkedList(head,null);
     }
 
-    public indi.xm.ds_algo.leetcode.data_structure.TreeNode getBalanceByLinkedList(ListNode head, ListNode tail){
+    public indi.xm.data_structure.TreeNode getBalanceByLinkedList(ListNode head, ListNode tail){
         if (head == null || head == tail){
             return null;
         }
@@ -59,7 +59,7 @@ public class SN0109 {
             slow = slow.next;
         }
         ListNode mid = slow;
-        indi.xm.ds_algo.leetcode.data_structure.TreeNode root  = new TreeNode(mid.val);
+        indi.xm.data_structure.TreeNode root  = new TreeNode(mid.val);
         root.left = getBalanceByLinkedList(head,slow);
         root.right = getBalanceByLinkedList(slow.next,tail);
         return root;

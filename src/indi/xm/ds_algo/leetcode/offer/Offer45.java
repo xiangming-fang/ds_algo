@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.offer;
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

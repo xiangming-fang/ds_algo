@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.offer;
 
-import indi.xm.ds_algo.leetcode.data_structure.Node;
+import indi.xm.data_structure.Node;
 
 import java.util.HashMap;
 import java.util.Map;

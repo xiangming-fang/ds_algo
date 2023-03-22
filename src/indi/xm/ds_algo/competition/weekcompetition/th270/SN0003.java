@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.competition.weekcompetition.th270;
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 import org.junit.Test;
 
 // 2096. 从二叉树一个节点到另一个节点每一步的方向

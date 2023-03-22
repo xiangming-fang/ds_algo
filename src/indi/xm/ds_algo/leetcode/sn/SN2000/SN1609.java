@@ -1,7 +1,7 @@
 package indi.xm.ds_algo.leetcode.sn.SN2000;
 
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 import java.util.LinkedList;
 // 1609.奇偶性
 public class SN1609 {

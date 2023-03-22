@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.sn.SN1000;
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 import org.junit.Test;
 
 import java.util.ArrayList;

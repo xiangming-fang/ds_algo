@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.competition.weekcompetition.th270;
 
-import indi.xm.ds_algo.leetcode.data_structure.ListNode;
+import indi.xm.data_structure.ListNode;
 
 public class SN0002 {
 

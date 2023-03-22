@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.leetcode.offer;
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 
 /**
  * @author: albert.fang
@@ -8,14 +8,14 @@ import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
  * @description: 28. 对称的二叉树
  */
 public class Offer28 {
-    public boolean isSymmetric(indi.xm.ds_algo.leetcode.data_structure.TreeNode root) {
+    public boolean isSymmetric(indi.xm.data_structure.TreeNode root) {
         if (root == null)
             return true;
         // 传入一个节点的左右子树
         return isSymmetric(root.left,root.right);
     }
 
-    private boolean isSymmetric(indi.xm.ds_algo.leetcode.data_structure.TreeNode left, TreeNode right) {
+    private boolean isSymmetric(indi.xm.data_structure.TreeNode left, TreeNode right) {
         if (left == null && right == null)
             return true;
         if (left == null || right == null)

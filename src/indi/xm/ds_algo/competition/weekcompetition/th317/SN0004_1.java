@@ -1,6 +1,6 @@
 package indi.xm.ds_algo.competition.weekcompetition.th317;
 
-import indi.xm.ds_algo.leetcode.data_structure.TreeNode;
+import indi.xm.data_structure.TreeNode;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
