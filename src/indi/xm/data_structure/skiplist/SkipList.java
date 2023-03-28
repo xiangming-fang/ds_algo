@@ -1,5 +1,6 @@
 package indi.xm.data_structure.skiplist;
 
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -154,6 +155,7 @@ public class SkipList {
         }
     }
 
+
     /**
      * 跳表的节点，每个节点记录了当前节点数据和所在层数数据
      */
@@ -178,6 +180,30 @@ public class SkipList {
             builder.append(" }");
             return builder.toString();
         }
+    }
+
+    // 以下是为迭代器新增内容
+
+
+    class SkipListIterator<T> implements Iterator<T> {
+
+        Node p = head.forwards[0];
+
+         @Override
+         public boolean hasNext() {
+             return p != null;
+         }
+
+         @Override
+         public T next() {
+             Integer tmp = p.data;
+             p = p.forwards[0];
+             return (T)tmp;
+         }
+    }
+
+    public Iterator iterator(){
+        return new SkipListIterator();
     }
 
 }
