@@ -183,8 +183,6 @@ public class SkipList {
     }
 
     // 以下是为迭代器新增内容
-
-
     class SkipListIterator<T> implements Iterator<T> {
 
         Node p = head.forwards[0];

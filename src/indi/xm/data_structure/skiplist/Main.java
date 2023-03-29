@@ -1,9 +1,7 @@
 package indi.xm.data_structure.skiplist;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Random;
-import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
@@ -18,11 +16,11 @@ public class Main {
 
     // 生成没有重复的随机数组
     public static int[] getRandomArray(){
-        int[] tmp = new int[80_0000];
+        int[] tmp = new int[200_0000];
         Random rd = new Random();
         // 具体大小和这个循环有关
-        for (int i = 0; i < 50_0000; i++) {
-            int r = rd.nextInt(80_0000);
+        for (int i = 0; i < 150_0000; i++) {
+            int r = rd.nextInt(200_0000);
             tmp[r] = 1;
         }
         int rdl = 0;
