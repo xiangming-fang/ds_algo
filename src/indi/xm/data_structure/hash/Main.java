@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         // 链表？哈希？
-        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>(16,0.5f,true);
+        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>(16,0.5f,false);
         map.put(2,324);
         map.put(456,234);
         map.put(789,234);
@@ -35,5 +35,11 @@ public class Main {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
+        String a = "a";
+        String b = "b";
+        String c = b = a;
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
     }
 }
